@@ -1,9 +1,10 @@
-import Trending from './components/main/Trending'
+import React from 'react'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
     <>
-      <Trending />
+      <HomePage />
     </>
   )
 }
