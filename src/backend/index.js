@@ -3,13 +3,20 @@ const require = createRequire(import.meta.url);
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+import authRoutes from './routes/auth.routes.js'
+
 require('dotenv').config();
 
+import connectDB from './config/db.js';
+
+connectDB()
 
 const app = express()
 const port = process.env.PORT || 3000
 
+
 app.use(cors());
+app.use("/api/v1", authRoutes)
 
 // Function for TMDB API calls
 const makeAPICall = async (url, params = {}) => {

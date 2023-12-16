@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
-
-const Images = () => {
+import axios from 'axios';
+const Images = ({ apiData }) => {
     const [Images, setImages] = useState()
     const ids = []
 
     // Getting IDs
-    useEffect(() => {
-        const getId = () => {
-            apiData?.results.map((data, index) => {
+    const getId = () => {
+        apiData?.results.map((data, index) => {
             ids.push(data.id)
-            });
-        };
-
-        getId()
-    }, [apiData])
+        });
+    };
+    getId()
 
     // Getting Images Based on ID
-    useEffect(()=> {
         const getImages = async () => {
             if(ids.length > 0) {
             const response = await axios.get(`/api/movie_images?id=${ids[0]}`)
@@ -31,14 +27,13 @@ const Images = () => {
             }
               setImages(filteredBackdrops.reverse());
             }
-            console.log(Images)
         }
 
         getImages()
-    }, [ids])
 
   return (
-    <div>Images</div>
+    <div>
+    </div>
   )
 }
 
