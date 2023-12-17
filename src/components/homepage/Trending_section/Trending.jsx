@@ -14,7 +14,7 @@ const Trending = () => {
 
   // Getting data for trending movies
   useEffect(() => {
-      axios.get('/api/movie_trending')
+      axios.get('/api/trendingMovie')
           .then((response) => {
               setApiData(response.data);
           })

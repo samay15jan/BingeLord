@@ -1,10 +1,10 @@
 import express from "express";
-import makeAPICall from "../../utils/tmdbApiCalls";
+import makeAPICall from "../../utils/tmdbApiCalls.js";
 
 const app = express()
 
 // Getting Trending Movies from TMDB
-app.get('/api/movie_trending', async (req, res) => {
+app.get('/api/trendingMovie', async (req, res) => {
     try {
         const url = 'https://api.themoviedb.org/3/trending/movie/week';
         const params = { language: 'en-US' };
@@ -16,7 +16,7 @@ app.get('/api/movie_trending', async (req, res) => {
 })
 
 // Getting Trending TV Shows from TMDB
-app.get('/api/tv_trending', async (req, res) => {
+app.get('/api/trendingTV', async (req, res) => {
     try {
         const url = 'https://api.themoviedb.org/3/trending/tv/week';
         const params = { language: 'en-US' };
