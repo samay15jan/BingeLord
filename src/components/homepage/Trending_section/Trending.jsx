@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import Poster from './Poster';
 
-const Container = styled.div`${tw`absolute`}`
+const Container = styled.div`${tw`relative`}`
 
 const Trending = () => {
   const [apiData, setApiData] = useState()

@@ -1,9 +1,13 @@
 import axios from "axios"
+import axiosRetry from "axios-retry";
+
+axiosRetry(axios, { retries: 3 });
 
 const makeAPICall = async (url, params = {}) => {
     try {
         const options = {
             method: 'GET',
+            timeout: 5000,
             url,
             params,
             headers: {

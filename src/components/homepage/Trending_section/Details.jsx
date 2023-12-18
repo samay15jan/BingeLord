@@ -11,7 +11,7 @@ const Voting = styled.div`${tw`text-xl font-bold p-5`}`
 const Overview = styled.div`${tw`mt-4 text-lg ml-5 mr-10 text-gray-400`}`
 
 const Details = ({data}) => {
-  const rating = "TMDB Rating " + data.vote_average.toFixed(1) + "/10"
+  const rating = "TMDB Rating " +  data.vote_average.toFixed(1) + "/10"
 
   var contentType
   if (data.media_type = 'movie') {

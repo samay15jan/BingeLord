@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 const Button = styled.button`
-${tw`absolute z-50 shadow-2xl shadow-[#c20432] text-white font-bold text-xl px-8 py-2 ml-8 mt-10 rounded-xl`}
+${tw`absolute bottom-4 z-50 text-white font-bold text-sm px-8 py-2 ml-8 rounded-xl`}
 transform: skew(-14deg);
 transition: background 0.5s ease;
 background: linear-gradient(to right, #cc021a, #FF004D);
@@ -13,7 +13,7 @@ background: linear-gradient(to right, #cc021a, #FF004D);
   color: #d9d4d5;
 }`
 
-const WatchNow = () => {
+const WatchButton = () => {
   return (
     <Button>
         Watch Now
@@ -21,4 +21,4 @@ const WatchNow = () => {
   )
 }
 
-export default WatchNow
+export default WatchButton

@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "axios": "^1.6.2",
+    "axios-retry": "^4.0.0",
     "bcrypt": "^5.1.1",
     "colorthief": "^2.4.0",
     "cors": "^2.8.5",
