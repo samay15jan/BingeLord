@@ -81,19 +81,19 @@ function Card({ data }) {
                   <DetailsContainer1>
                     <Title1>{data.title}</Title1>
                     <FlexContainer1>
-                      <OtherDetails>⭐ {data.vote_average.toFixed(1)}</OtherDetails>
+                      <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>
                       <OtherDetails>{year}</OtherDetails>
                       <AddButton>+</AddButton>
                     </FlexContainer1>
                     <Description>{description}</Description>
-                    <WatchButton/>
+                    <WatchButton id={data.id}/>
                   </DetailsContainer1>
                 </SubContainer>
               : <SubContainer>
                   <Image src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
                   <DetailsContainer2>
                     <FlexContainer2>
-                      <OtherDetails>⭐ {data.vote_average.toFixed(1)}</OtherDetails>
+                      <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>
                       <OtherDetails>{year}</OtherDetails>
                     </FlexContainer2>
                     <Title2>{data.title}</Title2>

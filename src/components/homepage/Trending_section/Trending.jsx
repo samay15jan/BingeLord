@@ -39,7 +39,7 @@ const Trending = () => {
         <Container>
           <Details data={data}/>
           <Background image={data.backdrop_path}/>
-          <Poster apiData={apiData} image={data.poster_path}/>
+          <Poster image={data.poster_path}/>
         </Container>
       }
     </div>

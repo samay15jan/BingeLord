@@ -7,17 +7,26 @@ import Info from './Info'
 const Container = styled.div`${tw`absolute ml-14 mt-48 w-[600px]`}`
 const Trending = styled.div`${tw`text-lg px-5 text-gray-400`}`
 const Title = styled.div`${tw`text-5xl font-bold p-5`}`
-const Voting = styled.div`${tw`text-xl font-bold p-5`}`
+const Text1 = styled.div`${tw`text-lg ml-5 mt-4 font-semibold`}`
+const Voting = styled.div`${tw`text-xl font-bold ml-5`}`
 const Overview = styled.div`${tw`mt-4 text-lg ml-5 mr-10 text-gray-400`}`
 
 const Details = ({data}) => {
-  const rating = "TMDB Rating " +  data.vote_average.toFixed(1) + "/10"
-
   var contentType
   if (data.media_type = 'movie') {
     contentType = 'THE FILM OF MONTH'
   } else {
     contentType = 'THE SERIES OF MONTH'
+  }
+
+  const rating = () => {
+    const rate = data.vote_average.toFixed(2)/2
+    if(rate === 0){return}
+    else if(rate >= 0.5 && rate < 1.5){return '⭐'}
+    else if(rate >= 1.5 && rate < 2.5){return '⭐ ⭐'}
+    else if(rate >= 2.5 && rate < 3.5){return '⭐ ⭐ ⭐'}
+    else if(rate >= 3.5 && rate < 4.5){return '⭐ ⭐ ⭐ ⭐'}
+    else{return '⭐ ⭐ ⭐ ⭐ ⭐'}
   }
 
   // Word Limit for Overview
@@ -29,10 +38,11 @@ const Details = ({data}) => {
     <Container>
           <Trending>{contentType}</Trending>
           <Title>{data.title}</Title>
-          <Voting>{rating}</Voting>
+          <Text1>TMDB</Text1>
+          <Voting>{rating()}</Voting>
           <Overview>{finalOutput}</Overview>
-          <WatchNow/>
-          <Info/>
+          <WatchNow text={'Watch Now'} id={data.id}/>
+          <Info text={'+'}/>
     </Container>
   )
 }

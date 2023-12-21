@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { useNavigate } from 'react-router-dom';
 
 const Button = styled.button`
 ${tw`absolute bottom-4 z-50 text-white font-bold text-sm px-8 py-2 ml-8 rounded-xl`}
@@ -13,9 +14,15 @@ background: linear-gradient(to right, #cc021a, #FF004D);
   color: #d9d4d5;
 }`
 
-const WatchButton = () => {
+const WatchButton = ({ id }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movie/${id}`);
+  };
+
   return (
-    <Button>
+    <Button onClick={handleClick}>
         Watch Now
     </Button>
   )
