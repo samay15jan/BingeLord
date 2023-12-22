@@ -13,7 +13,6 @@ transition: background 0.3s ease;
 
 const TrailerButton = ({ ID, menu, url, text }) => {
   const navigate = useNavigate()
-  console.log(ID)
 
   const handleClick = () => {
     navigate(`/movie/${ID}/${menu}/${url}`);

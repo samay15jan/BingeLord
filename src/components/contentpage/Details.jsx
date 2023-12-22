@@ -44,7 +44,7 @@ const Details = ({ data }) => {
           <Voting>{rating()}</Voting>
           <Text2>StoryLine</Text2>
           <Overview>{data.overview}</Overview>
-          <PlayButton text={'Play'}/>
+          <PlayButton menu={'vidsrc'} ID={data.id} text={'Play'}/>
           {getTrailer.length > 0 
             ? <TrailerButton 
                 ID={data.id}

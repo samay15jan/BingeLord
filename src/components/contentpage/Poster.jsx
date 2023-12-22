@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import ColorThief from 'colorthief';
 
-const Container = styled.button`
+const Container = styled.div`
 ${tw`absolute z-50 left-14 top-14 mb-20 rounded-xl mr-20 backdrop-blur-xl shadow-sm shadow-white`}
 `
 

@@ -6,14 +6,22 @@ import styled from 'styled-components';
 const Iframe = styled.iframe`${tw`w-screen h-screen`}`
 
 const Overflow = () => {
-  const { menu, url } = useParams();
+  const { id, menu, url } = useParams();
 
   return (
     <div>
-        <Iframe
+      {url === 'stream' && menu === 'vidsrc' 
+        ? <Iframe
+            src={`https://vidsrc.to/embed/movie/${id}`}
+            allowFullScreen
+          ></Iframe>
+
+        : <Iframe
             src={`https://www.youtube.com/embed/${url}`}
             allowFullScreen
-        ></Iframe>
+          ></Iframe>
+        }
+      
     </div>
   )
 }
