@@ -30,9 +30,10 @@ ${tw`ml-2 mt-5 w-[135px] h-[275px] rounded-xl object-cover`}
 const Media = ({ data }) => {
     const [apiData, setApiData] = useState()
     const [Images, setImages] = useState()
-      // Getting Images Based on ID
-      const ID = data?.id
-      useEffect(() => {
+
+    // Getting Images Based on ID
+    const ID = data?.id
+    useEffect(() => {
         axios.get(`/api/imagesMovie?id=${ID}`)
         .then((response) => {
           setApiData(response.data);
@@ -40,7 +41,7 @@ const Media = ({ data }) => {
         .catch((error) => {
           console.log(error);
         });
-      }, [ID])
+    }, [ID])
 
     const getImages = () => {
       if (apiData) {
@@ -59,8 +60,7 @@ const Media = ({ data }) => {
       });
       }
       setImages(filteredBackdrops.reverse());
-    }};
-  }
+    }}}
 
     useEffect(() => {
       getImages();
@@ -72,6 +72,7 @@ const Media = ({ data }) => {
     const handleClick = (menu, url) => {
       navigate(`/movie/${data.id}/${menu}${url}`);
     };
+
     return (
     <Container>
       <Flex>
@@ -80,13 +81,13 @@ const Media = ({ data }) => {
       </Flex>
       {Images && 
         <>
-          <Image1 onClick={() => handleClick("image", `${Images[0]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[0]?.file_path}`} alt="loading..." />
+          <Image1 onClick={() => handleClick("image", `${Images[0]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[0]?.file_path}`} alt="" />
           <Grid>
             <div>
-              <Image2 onClick={() => handleClick("image", `${Images[1]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[1]?.file_path}`} alt="loading..." />
-              <Image3 onClick={() => handleClick("image", `${Images[2]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[2]?.file_path}`} alt="loading..." />
+              <Image2 onClick={() => handleClick("image", `${Images[1]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[1]?.file_path}`} alt="" />
+              <Image3 onClick={() => handleClick("image", `${Images[2]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[2]?.file_path}`} alt="" />
             </div>
-            <Image4 onClick={() => handleClick("image", `${Images[3]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[3]?.file_path}`} alt="loading..." />
+            <Image4 onClick={() => handleClick("image", `${Images[3]?.file_path}`)} src={`https://image.tmdb.org/t/p/original${Images[3]?.file_path}`} alt="" />
           </Grid>
         </>
         }
