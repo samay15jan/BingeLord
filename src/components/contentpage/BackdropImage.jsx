@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const CroppedImageContainer = styled.div`
-  ${tw`relative h-72 w-screen overflow-hidden rounded-b-3xl`}
+  ${tw`relative h-[290px] w-screen overflow-hidden rounded-b-3xl`}
 `;
 
 const BackgroundImage = styled.img`

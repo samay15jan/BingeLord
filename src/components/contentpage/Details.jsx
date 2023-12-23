@@ -11,8 +11,13 @@ const Genre = styled.div`${tw`flex text-sm ml-4 font-semibold`}`
 const GenreType = styled.div`${tw`mx-1`}`
 const Text1 = styled.div`${tw`text-lg ml-5 mt-4 font-semibold`}`
 const Voting = styled.div`${tw`text-xl font-bold ml-5`}`
-const Text2 = styled.div`${tw`text-lg ml-5 mt-5 font-semibold`}`
-const Overview = styled.div`${tw`mt-4 text-sm ml-5 mr-10 text-gray-600 opacity-70 w-[550px]`}`
+const Text2 = styled.div`${tw`text-lg ml-5 mt-12 font-semibold`}`
+const Overview = styled.div`${tw`mt-4 text-sm ml-5 mr-10 text-gray-100 opacity-70 w-[550px]`}`
+const Text3 = styled.div`${tw`text-lg ml-5 mt-28 mb-5 font-semibold`}`
+const GridContainer1 = styled.div`${tw`grid grid-cols-2 mt-2 justify-between w-[550px]`}`
+const GridContainer2 = styled.div`${tw`grid grid-cols-1 mt-1`}`
+const Text4 = styled.div`${tw`text-sm ml-5 font-semibold`}`
+const Text5 = styled.div`${tw`text-sm text-gray-100 opacity-70 text-right`}`
 
 const Details = ({ data }) => {
 
@@ -28,11 +33,15 @@ const Details = ({ data }) => {
 
   const year = new Date(data.release_date).getFullYear();
   const getTrailer = data.videos?.results.filter((id => (id.type === "Trailer")))
-
+  const director = data.credits?.crew.filter((id) => (id.job === "Director"))
+  const producer = data.credits?.crew.filter((id) => (id.job === "Producer"))
+  const screenplay = data.credits?.crew.filter((id) => (id.job === "Screenplay"))
+  
   return (
     <Container>
           <Year>{year}</Year>
           <Title>{data.title}</Title>
+
           <Genre>
             {data.genres.map((genre, index) => (
               <GenreType key={genre.id}>
@@ -40,11 +49,13 @@ const Details = ({ data }) => {
               </GenreType>
             ))}
           </Genre>
+
           <Text1>TMDB</Text1>
           <Voting>{rating()}</Voting>
           <Text2>StoryLine</Text2>
           <Overview>{data.overview}</Overview>
           <PlayButton menu={'vidsrc'} ID={data.id} text={'Play'}/>
+          
           {getTrailer.length > 0 
             ? <TrailerButton 
                 ID={data.id}
@@ -54,6 +65,43 @@ const Details = ({ data }) => {
               /> 
             : ''
           }
+
+          <Text3>More Details</Text3>
+
+          <GridContainer1>
+            <Text4>Director:</Text4>
+            <Text5>{director[0]?.name}</Text5>
+          </GridContainer1>
+
+          <GridContainer1>
+            <Text4>Producer:</Text4>
+            <GridContainer2>
+              {producer.map((data, index) => (
+                <Text5 key={data.id}>
+                  {data.name}
+                </Text5>
+              ))}
+            </GridContainer2>
+          </GridContainer1>
+
+          <GridContainer1>
+            <Text4>Screenplay:</Text4> 
+            <GridContainer2>
+              {screenplay.map((data, index) => (
+                <Text5 key={data.id}>
+                  {data.name}
+                </Text5>
+              ))}
+            </GridContainer2>
+          </GridContainer1>
+
+          <GridContainer1>
+            <Text4>Collection:</Text4>
+            <GridContainer2>
+                <Text5>{data.belongs_to_collection?.name}</Text5>
+            </GridContainer2>
+          </GridContainer1>
+          
     </Container>
   )
 }

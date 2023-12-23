@@ -1,5 +1,5 @@
 import express from "express";
-import makeAPICall from "../../utils/tmdbApiCalls";
+import makeAPICall from "../../utils/tmdbApiCalls.js";
 
 const app = express()
 

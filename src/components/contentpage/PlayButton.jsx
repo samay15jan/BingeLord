@@ -21,7 +21,6 @@ const PlayButton = ({ ID, menu, text }) => {
     const url = 'stream'
     navigate(`/movie/${ID}/${menu}/${url}`);
   };
-  console.log(ID, menu, text)
   return (
     <Button onClick={handleClick}>
         {text}

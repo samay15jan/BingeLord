@@ -1,5 +1,5 @@
 import express from "express";
-import makeAPICall from "../../utils/tmdbApiCalls";
+import makeAPICall from "../../utils/tmdbApiCalls.js";
 
 const app = express()
 
@@ -14,7 +14,7 @@ app.get('/api/topRatedMovie', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 })
-topRatedTV
+
 // Getting Top Rated TV Shows In US
 app.get('/api/topRatedTV', async (req, res) => {
     try {

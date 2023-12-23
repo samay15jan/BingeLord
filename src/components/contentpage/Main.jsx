@@ -1,12 +1,15 @@
 import React,{ useState,useEffect } from 'react'
 import axios from 'axios'
+import tw from 'twin.macro'
+import styled from 'styled-components'
 import Poster from './Poster'
 import Details from './Details'
 import BackdropImage from './BackdropImage'
-import tw from 'twin.macro'
-import styled from 'styled-components'
+import Cast from './Cast'
+import Media from './Media'
 
-const Container = styled.div`${tw`bg-[#121212] w-screen h-screen`}`
+const Container = styled.div`${tw``}`
+
 const Main = ({ id }) => {
     const [apiData, setApiData] = useState()
     // Getting data for trending movies
@@ -24,9 +27,11 @@ const Main = ({ id }) => {
     <div>
         {apiData && 
             <Container>
-                <Poster image={apiData.poster_path}/> 
-                <Details data={apiData}/>
                 <BackdropImage image={apiData.backdrop_path}/>
+                <Poster image={apiData.poster_path}/> 
+                <Details data={apiData}/>   
+                <Cast data={apiData}/>
+                <Media data={apiData}/>
             </Container>
         }
     </div>
