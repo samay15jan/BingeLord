@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import Poster from './Poster';
 
+const Main= styled.div`${tw`w-screen h-screen`}`
 const Container = styled.div`${tw`relative`}`
 
 const Trending = () => {
@@ -34,7 +35,7 @@ const Trending = () => {
   const data = apiData?.results[number];
   
   return (
-    <div>
+    <Main>
       {apiData && 
         <Container>
           <Details data={data}/>
@@ -42,7 +43,7 @@ const Trending = () => {
           <Poster image={data.poster_path}/>
         </Container>
       }
-    </div>
+    </Main>
   )
 }
 
