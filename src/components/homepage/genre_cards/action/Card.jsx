@@ -61,10 +61,15 @@ const Description = styled.div`
 `;
 
 
-function Card({ data }) {
+function Card({ type, data }) {
     const [showDetails, setShowDetails] = useState(false)
+    var year 
+    if(type === 'movies'){
+      year = new Date(data.release_date).getFullYear()
+    } else {
+      year = new Date(data.first_air_date).getFullYear()
+    }
 
-    var year = new Date(data.release_date).getFullYear();
     // Word Limit for Overview
     const words = data.overview?.split(' ');
     const cutWords = words?.slice(0, 15);
@@ -79,14 +84,14 @@ function Card({ data }) {
               ? <SubContainer>
                   <Image src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
                   <DetailsContainer1>
-                    <Title1>{data.title}</Title1>
+                    <Title1>{type === 'tv' ? data.name : data.title}</Title1>
                     <FlexContainer1>
                       <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>
                       <OtherDetails>{year}</OtherDetails>
                       <AddButton>+</AddButton>
                     </FlexContainer1>
                     <Description>{description}</Description>
-                    <WatchButton id={data.id}/>
+                    <WatchButton type={type} id={data.id}/>
                   </DetailsContainer1>
                 </SubContainer>
               : <SubContainer>
@@ -96,7 +101,7 @@ function Card({ data }) {
                       <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>
                       <OtherDetails>{year}</OtherDetails>
                     </FlexContainer2>
-                    <Title2>{data.title}</Title2>
+                    <Title2>{type === 'tv' ? data.name : data.title}</Title2>
                   </DetailsContainer2>
                 </SubContainer>
           }

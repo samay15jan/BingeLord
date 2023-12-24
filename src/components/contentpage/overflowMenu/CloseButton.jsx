@@ -10,11 +10,11 @@ const Button = styled.button`${tw`absolute z-50 right-5 top-5 px-1 py-1 rounded-
     background-color: #252525;
 }`
 
-const CloseButton = ({ id }) => {
+const CloseButton = ({ id, type }) => {
     // Navigation
     const navigate = useNavigate()
     const close = () => {
-      navigate(`/movie/${id}`);
+      navigate(`/${type}/${id}`);
     }
     
   return (

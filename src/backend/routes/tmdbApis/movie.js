@@ -3,7 +3,7 @@ import makeAPICall from "../../utils/tmdbApiCalls.js";
 
 const app = express()
 
-// Getting number of seasons and episodes 
+// Getting details of Movie
 app.get('/api/movie', async (req, res) => {
     try {
         const id = parseInt(req.query.id, 10)

@@ -9,6 +9,7 @@ import Cast from './Cast'
 import Media from './Media'
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const Container = styled.div`${tw``}`
 const CloseButton = styled.button`${tw`absolute z-10 right-5 top-5 px-1 py-1 rounded-lg bg-[#080808]`} 
@@ -18,21 +19,37 @@ const CloseButton = styled.button`${tw`absolute z-10 right-5 top-5 px-1 py-1 rou
 }`
 
 const Main = ({ id }) => {
+    const { type } = useParams();
+
     const [apiData, setApiData] = useState()
     
+    const navigate = useNavigate()
+
+    const apiType = () => {
+      if(type === 'movies'){
+        return 'movie'
+      }
+      else if(type === 'tv'){
+        return 'series'
+      }
+      else navigate('/404')
+    }
+    
+  
     // Getting data for trending movies
     useEffect(() => {
-        axios.get(`/api/movie?id=${id}`)
+        const type = apiType()
+        axios.get(`/api/${type}?id=${id}`)
         .then((response) => {
             setApiData(response.data);
         })
         .catch((error) => {
             console.log(error);
         });
-    }, [])
-    const navigate = useNavigate()
+    }, [type])
+
     const close = () => {
-      navigate(`/`);
+      navigate(`/${type}`);
     }
 
   return (
@@ -44,9 +61,9 @@ const Main = ({ id }) => {
                 </CloseButton>
                 <BackdropImage image={apiData.backdrop_path}/>
                 <Poster image={apiData.poster_path}/> 
-                <Details data={apiData}/>   
+                <Details data={apiData} type={type}/>   
                 <Cast data={apiData}/>
-                <Media data={apiData}/>
+                <Media data={apiData} type={type}/>
             </Container>
         }
     </div>

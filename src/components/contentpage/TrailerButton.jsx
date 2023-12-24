@@ -11,11 +11,11 @@ transition: background 0.3s ease;
     color: white;
 }`
 
-const TrailerButton = ({ ID, menu, url, text }) => {
+const TrailerButton = ({ ID, menu, url, text, type }) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/movie/${ID}/${menu}/${url}`);
+    navigate(`/${type}/${ID}/${menu}/${url}`);
   };
 
   return (

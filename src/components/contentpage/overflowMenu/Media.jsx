@@ -18,33 +18,53 @@ const PreviousButton = styled.button`${tw`absolute right-10 top-1/2 font-bold bg
   color: white;
 }`
 
-const Media = ({ ID, menu }) => {
+const Media = ({ ID, menu, type  }) => {
     const [imageData, setImageData] = useState()
     const [Data, setData] = useState()
-
+    
+    const imageType = () => {
+      if(type === 'movies'){
+        return "imagesMovie"
+      } 
+      else if(type === 'tv') {
+        return "imagesTV"
+      }
+    }
+    const videoType = () => {
+      if(type === 'movies'){
+        return "movie"
+      } 
+      else if(type === 'tv') {
+        return "series"
+      }
+    }
+    
     useEffect(() => {
+      const image = imageType()
+      const video = videoType()
       // Getting Images Based on ID
       if(menu === 'photos') {
-        axios.get(`/api/imagesMovie?id=${ID}`)
+        axios.get(`/api/${image}?id=${ID}`)
         .then((response) => {
           setImageData(response.data);
         })
         .catch((error) => {
           console.log(error);
-        });
+        })
       } 
 
       // Getting Videos Based on ID
       if(menu === 'videos') {
-        axios.get(`/api/movie?id=${ID}`)
-          .then((response) => {
-            setData(response.data?.videos?.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        }
-    }, [])
+        axios.get(`/api/${video}?id=${ID}`)
+        .then((response) => {
+          setData(response.data?.videos?.results);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    }, [ID, type])
+
 
     const getImages = () => {
       if (imageData) {

@@ -3,11 +3,11 @@ import makeAPICall from "../../utils/tmdbApiCalls.js";
 
 const app = express()
 
-// Getting number of seasons and episodes 
-app.get('/api/seasons&episodes', async (req, res) => {
+// Getting tv series details 
+app.get('/api/series', async (req, res) => {
     try {
         const id = parseInt(req.query.id, 10)
-        const url = `https://api.themoviedb.org/3/tv/${id}/screened_theatrically`;
+        const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&append_to_response=videos,credits,similar`;
         const params = null;
         const data = await makeAPICall(url, params);
         res.send(data);

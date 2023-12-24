@@ -14,11 +14,11 @@ background: linear-gradient(to right, #cc021a, #FF004D);
   color: #d9d4d5;
 }`
 
-const WatchNow = ({ id, text }) => {
+const WatchNow = ({ id, text, type }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/movie/${id}`);
+    navigate(`/${type}/${id}`);
   };
 
 

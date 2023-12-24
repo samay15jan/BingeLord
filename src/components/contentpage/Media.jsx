@@ -27,21 +27,32 @@ const Image4 = styled.img`
 ${tw`ml-2 mt-5 w-[135px] h-[275px] rounded-xl object-cover`}
 `
 
-const Media = ({ data }) => {
+const Media = ({ data, type }) => {
     const [apiData, setApiData] = useState()
     const [Images, setImages] = useState()
+
+    const checkingType = () => {
+      if(type === 'movies'){
+        return "imagesMovie"
+      } 
+      else if(type === 'tv') {
+        return "imagesTV"
+      }
+      else navigate('/404')
+    }
 
     // Getting Images Based on ID
     const ID = data?.id
     useEffect(() => {
-        axios.get(`/api/imagesMovie?id=${ID}`)
+        const finalType = checkingType()
+        axios.get(`/api/${finalType}?id=${ID}`)
         .then((response) => {
           setApiData(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, [ID])
+    }, [ID, type])
 
     const getImages = () => {
       if (apiData) {
@@ -70,7 +81,7 @@ const Media = ({ data }) => {
     const navigate = useNavigate()
 
     const handleClick = (menu, url) => {
-      navigate(`/movie/${data.id}/${menu}${url}`);
+      navigate(`/${type}/${data.id}/${menu}${url}`);
     };
 
     return (

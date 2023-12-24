@@ -11,7 +11,7 @@ app.get('/api/discoverMovie', async (req, res) => {
         const params = {
             language: 'en-US',
             page: '1',
-            include_adult: true,
+            include_adult: false,
             include_video: false,
             sort_by: 'popularity.desc',
             year: '0',
@@ -28,14 +28,17 @@ app.get('/api/discoverMovie', async (req, res) => {
 app.get('/api/discoverTV', async (req, res) => {
     try {
         const genre = parseInt(req.query.genre, 10)
+        const oneYearAgo = new Date();
+        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 10); // 1 year from current date
+        const formattedDate = oneYearAgo.toISOString().split('T')[0]; // Formatted as 'YYYY-MM-DD'
         const url = 'https://api.themoviedb.org/3/discover/tv';
         const params = {
             language: 'en-US',
             page: '1',
-            include_adult: true,
+            include_adult: false,
             include_video: false,
             sort_by: 'popularity.desc',
-            year: '0',
+            'first_air_date.gte': formattedDate,
             with_genres: `${genre}` || '0', 
         };
         const data = await makeAPICall(url, params);

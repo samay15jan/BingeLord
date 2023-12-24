@@ -11,12 +11,13 @@ const Text1 = styled.div`${tw`text-lg ml-5 mt-4 font-semibold`}`
 const Voting = styled.div`${tw`text-xl font-bold ml-5`}`
 const Overview = styled.div`${tw`mt-4 text-lg ml-5 mr-10 text-gray-400`}`
 
-const Details = ({data}) => {
-  var contentType
-  if (data.media_type = 'movie') {
-    contentType = 'THE FILM OF MONTH'
-  } else {
-    contentType = 'THE SERIES OF MONTH'
+const Details = ({ data, type }) => {
+  const contentType = () => {
+    if (type === 'movies') {
+      return 'Popular Film Of Month'
+    } else {
+      return 'Popular Series Of Month'
+    }
   }
 
   const rating = () => {
@@ -36,12 +37,12 @@ const Details = ({data}) => {
 
   return (
     <Container>
-          <Trending>{contentType}</Trending>
-          <Title>{data.title}</Title>
+          <Trending>{contentType()}</Trending>
+          <Title>{type === 'tv' ? data.name : data.title}</Title>
           <Text1>TMDB</Text1>
           <Voting>{rating()}</Voting>
           <Overview>{finalOutput}</Overview>
-          <WatchNow text={'Watch Now'} id={data.id}/>
+          <WatchNow text={'Watch Now'} id={data.id} type={type}/>
           <Info text={'+'}/>
     </Container>
   )

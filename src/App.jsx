@@ -20,7 +20,13 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route index element={<HomePage />}/>
+        <Route index element={<div>HomePage</div>}/>
+        <Route path="/login" element={<div>Login</div>}/>
+        <Route path="/signup" element={<div>Signup</div>}/>
+        <Route path="/search" element={<div>Search</div>}/>
+        <Route path="/account" element={<div>Account</div>}/>
+        <Route path="/404" element={<div>Not Found</div>}/>
+        <Route path="/:type" element={<HomePage />}/>
         <Route path="/:type/:id" element={<ContentPage />}/>
         <Route path="/:type/:id/:menu/:url" element={<Overflow />}/>
       </Routes>

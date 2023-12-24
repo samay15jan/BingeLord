@@ -11,23 +11,38 @@ const SafeArea = styled.div`${tw`my-10`}`
 
 const Container = styled.div`${tw`w-auto mx-10 grid-flow-col grid overflow-x-auto`}`
 
-const Genre = ({ type, genreId }) => {
+const Genre = ({ type, movieID, seriesID }) => {
     const [apiData, setApiData] = useState()
+    const genreType = () => {
+      if(type === 'movies'){
+        return movieID
+      }
+      else if(type === 'tv'){
+        return seriesID
+      }
+      else navigate('/404')
+    }
 
+    const finalType = {
+      'movies': 'discoverMovie',
+      'tv': 'discoverTV'
+    }
     // Getting data for type with genreId
     useEffect(() => {
-        axios.get(`/api/${type}?genre=${genreId}`)
+        const genre = genreType()
+        const endpoint = finalType[type]
+        axios.get(`/api/${endpoint}?genre=${genre}`)
             .then((response) => { 
                 setApiData(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [])
+    }, [type])
 
     const type_genre = {
-      "discoverMovie": "Movies",
-      "discoverTV": "TV Series"
+      "movies": "Movies",
+      "tv": "TV Series"
     }
 
     const MovieGenres = {
@@ -74,15 +89,15 @@ const Genre = ({ type, genreId }) => {
   return (
     <SafeArea>
       <Heading>
-        {type_genre[type]==="Movies" 
-          ? MovieGenres[genreId] + " " + type_genre[type] 
-          : TVShowGenres[genreId] + " " + type_genre[type]
+        {type === "movies" 
+          ? MovieGenres[movieID] + " " + type_genre[type]
+          : TVShowGenres[seriesID] + " " + type_genre[type]
         }
       </Heading>
       <Container>
         {apiData && apiData.results.map((data, index) => (
             <div key={data.id}>
-                <Card data={data}/>
+                <Card type={type} data={data}/>
             </div>
         ))}
       </Container>

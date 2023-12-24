@@ -12,17 +12,17 @@ const StreamIframe = styled.iframe`${tw`px-10 py-10 w-screen h-screen justify-ce
 const YoutubeIframe = styled.iframe`${tw`px-10 py-10 w-screen h-screen justify-center`}`
 
 const Overflow = () => {
-  const { id, menu, url } = useParams();
+  const { type, id, menu, url } = useParams();
 
   const output = () => {
     if(menu === 'image'){
       return <Image src={`https://image.tmdb.org/t/p/original/${url}`} alt='Image'/>
     } 
     if(menu === 'photos' || menu === 'videos'){
-      return <Media ID={id} menu={menu}/>
+      return <Media type={type} ID={id} menu={menu}/>
     }
     if(menu === 'vidsrc'){
-      return <StreamIframe src={`https://vidsrc.to/embed/movie/${id}`} allowFullScreen/>
+      return <StreamIframe src={`https://vidsrc.to/embed/${type === 'movies'? 'movie' : 'tv'}/${id}`} allowFullScreen/>
     }
     if(menu === 'Trailer'){
       return <YoutubeIframe src={`https://www.youtube.com/embed/${url}`} allowFullScreen/>
@@ -33,7 +33,7 @@ const Overflow = () => {
   return (
     <Container>
       {output()}
-      <CloseButton id={id}/>
+      <CloseButton type={type} id={id}/>
     </Container>
   )
 }

@@ -14,13 +14,13 @@ background: linear-gradient(to right, #cc021a, #FF004D);
   color: #d9d4d5;
 }`
 
-const PlayButton = ({ ID, menu, text }) => {
+const PlayButton = ({ ID, menu, text, type }) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    const url = 'stream'
-    navigate(`/movie/${ID}/${menu}/${url}`);
+    navigate(`/${type}/${ID}/${menu}/stream`);
   };
+  
   return (
     <Button onClick={handleClick}>
         {text}
