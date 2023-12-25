@@ -82,7 +82,7 @@ function Card({ type, data }) {
         >
           {showDetails 
               ? <SubContainer>
-                  <Image src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
+                  <Image loading="lazy" src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
                   <DetailsContainer1>
                     <Title1>{type === 'tv' ? data.name : data.title}</Title1>
                     <FlexContainer1>
@@ -95,7 +95,7 @@ function Card({ type, data }) {
                   </DetailsContainer1>
                 </SubContainer>
               : <SubContainer>
-                  <Image src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
+                  <Image loading="lazy" src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
                   <DetailsContainer2>
                     <FlexContainer2>
                       <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>

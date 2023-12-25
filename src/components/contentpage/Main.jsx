@@ -10,6 +10,7 @@ import Media from './Media'
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import Similar from './Similar'
 
 const Container = styled.div`${tw``}`
 const CloseButton = styled.button`${tw`absolute z-10 right-5 top-5 px-1 py-1 rounded-lg bg-[#080808]`} 
@@ -61,9 +62,10 @@ const Main = ({ id }) => {
                 </CloseButton>
                 <BackdropImage image={apiData.backdrop_path}/>
                 <Poster image={apiData.poster_path}/> 
-                <Details data={apiData} type={type}/>   
                 <Cast data={apiData}/>
+                <Details data={apiData} type={type}/>   
                 <Media data={apiData} type={type}/>
+                <Similar data={apiData.similar} type={type}/>
             </Container>
         }
     </div>
