@@ -1,12 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { useNavigate } from 'react-router-dom'
 
-const Text = styled.div`${tw`text-lg font-bold mx-10 hover:text-gray-500 mt-6`}`
+const ButtonContainer = styled.button`${tw`text-lg font-bold mx-10 hover:text-gray-500 mt-2 `}`
 
-const Search = () => {
+const Search = ({ type }) => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(`/${type}`);
+  };
+
   return (
-    <Text>Search</Text>
+    <ButtonContainer onClick={handleClick}>
+      Search
+    </ButtonContainer>
   )
 }
 
