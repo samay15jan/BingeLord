@@ -16,7 +16,6 @@ background: linear-gradient(to right, #cc021a, #FF004D);
 
 const WatchButton = ({ id, type }) => {
   const navigate = useNavigate();
-
   const handleClick = () => {
     navigate(`/${type}/${id}`);
   };

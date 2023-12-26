@@ -54,29 +54,28 @@ const Media = ({ data, type }) => {
         });
     }, [ID, type])
 
+    // filtering Images based on Vote Counts
     const getImages = () => {
+      var filteredBackdrops
       if (apiData) {
-        let filteredBackdrops = apiData?.backdrops.filter(backdrop => {
-          return backdrop.vote_count >= 10.0;
-        });
-
+        filteredBackdrops = apiData?.backdrops.filter(backdrop => {
+          return backdrop.vote_count >= 10;
+        })}
       if (apiData && filteredBackdrops.length < 5) {
         filteredBackdrops = apiData?.backdrops.filter(backdrop => {
-          return backdrop.vote_count >= 5.0;
-        });
-
+          return backdrop.vote_count >= 5;
+        })}
       if (apiData && filteredBackdrops.length >= 0 ) {
         filteredBackdrops = apiData?.backdrops.filter(backdrop => {
           return backdrop.vote_count >= 0;
-      });
-      }
-      setImages(filteredBackdrops.reverse());
-    }}}
+      })}
+      setImages(filteredBackdrops?.reverse());
+    }
 
     useEffect(() => {
       getImages();
     }, [apiData]);
-    
+
     // Image Click Fullscreen
     const navigate = useNavigate()
 

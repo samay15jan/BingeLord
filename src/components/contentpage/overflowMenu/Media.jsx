@@ -66,22 +66,25 @@ const Media = ({ ID, menu, type  }) => {
     }, [ID, type])
 
 
+    // filtering Images based on Vote Counts
     const getImages = () => {
+      var filteredBackdrops
       if (imageData) {
-        let filteredBackdrops = imageData?.backdrops.filter(backdrop => {
-          return backdrop.vote_count >= 10.0;
-        });
+        filteredBackdrops = imageData?.backdrops.filter(backdrop => {
+          return backdrop.vote_count >= 10;
+      })}
+
       if (imageData && filteredBackdrops.length < 5) {
         filteredBackdrops = imageData?.backdrops.filter(backdrop => {
-          return backdrop.vote_count >= 5.0;
-        });
-      if (imageData && filteredBackdrops.length >= 0 ) {
+          return backdrop.vote_count >= 5;
+      })}
+      
+      if (imageData && filteredBackdrops.length >= 0) {
         filteredBackdrops = imageData?.backdrops.filter(backdrop => {
           return backdrop.vote_count >= 0;
-      });
-      }
-      setData(filteredBackdrops.reverse());
-    }}}
+      })}
+      setData(filteredBackdrops?.reverse());
+    }
 
     useEffect(() => {
       getImages();

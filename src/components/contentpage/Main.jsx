@@ -47,7 +47,7 @@ const Main = ({ id }) => {
         .catch((error) => {
             console.log(error);
         });
-    }, [type])
+    }, [id, type])
 
     const close = () => {
       navigate(`/${type}`);
