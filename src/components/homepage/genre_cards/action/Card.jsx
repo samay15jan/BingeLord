@@ -62,6 +62,7 @@ const Description = styled.div`
 
 
 function Card({ type, data }) {
+  console.log(data)
     const [showDetails, setShowDetails] = useState(false)
     var year 
     if(type === 'movies'){

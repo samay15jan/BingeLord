@@ -12,7 +12,7 @@ app.get('/api/searchMovie', async (req, res) => {
             query: search,
             include_adult: 'false',
             language: 'en-US',
-            page: '1'
+            page: '1',
         };
         const data = await makeAPICall(url, params);
         res.send(data);

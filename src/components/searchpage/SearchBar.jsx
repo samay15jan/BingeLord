@@ -2,22 +2,29 @@ import React, { useState } from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 import { FiSearch } from "react-icons/fi";
- 
-const Search = styled.input`${tw`w-1/3 h-10 p-6 rounded-3xl bg-[#161616] text-white text-xl`}
+  
+const Form = styled.form`${tw`ml-96 w-full`}`
+const Search = styled.input`${tw`m-1 w-1/3 h-10 p-6 rounded-3xl bg-[#161616] text-white text-xl`}
 &:focus {
-  outline: 2px solid #515151;}
+  outline: 3px solid #515151;
+}`
+
+const Button = styled.button`${tw`absolute ml-[435px] mt-1 text-lg text-white font-bold px-5 py-3 rounded-3xl`}
+transition: background 0.5s ease;
+background: linear-gradient(to right, #cc021a, #FF004D);
+&:hover {
+  background: linear-gradient(to right, #a60516, #a60516);
+  color: #d9d4d5;
 `
 
 const SearchBar = ({ onsubmit, onchange }) => {
   return (
-    <>
-        <form onSubmit={onsubmit}>
+        <Form onSubmit={onsubmit}>
+            <Button type="submit">
+                <FiSearch size={25}/>
+            </Button>
             <Search placeholder='Search' accessKey='s' type="text" onChange={onchange}/>
-            <button type="submit">
-                <FiSearch/>
-            </button>
-        </form>
-    </>
+        </Form>
   )
 }
 

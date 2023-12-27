@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
-import actors from './routes/tmdbApis/actors.js'
 import discover from './routes/tmdbApis/discover.js'
 import images from './routes/tmdbApis/images.js'
 import movie from './routes/tmdbApis/movie.js'
@@ -18,7 +17,6 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(cors())
-app.use('/', actors)
 app.use('/', discover)
 app.use('/', images)
 app.use('/', movie)
