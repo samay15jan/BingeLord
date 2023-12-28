@@ -4,12 +4,11 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Card from './Card'
 
-const Heading = styled.div`
-  ${tw`ml-10 mt-4 my-5 text-3xl text-white font-bold`}
-`
 const SafeArea = styled.div`${tw`my-10`}`
-
+const Heading = styled.div`${tw`ml-10 mt-10 my-5 text-3xl text-white font-bold`}`
 const Container = styled.div`${tw`w-auto mx-10 grid-flow-col grid overflow-x-auto`}`
+const SubContainer = styled.div`${tw`my-5`}`
+
 
 const Genre = ({ type, movieID, seriesID }) => {
     const [apiData, setApiData] = useState()
@@ -46,59 +45,39 @@ const Genre = ({ type, movieID, seriesID }) => {
     }
 
     const MovieGenres = {
-      28: "Action",
-      12: "Adventure",
-      16: "Animation",
-      35: "Comedy",
-      80: "Crime",
-      99: "Documentary",
-      18: "Drama",
-      10751: "Family",
-      14: "Fantasy",
-      36: "History",
-      27: "Horror",
-      10402: "Music",
-      9648: "Mystery",
-      10749: "Romance",
-      878: "Science Fiction",
-      10770: "TV Movie",
-      53: "Thriller",
-      10752: "War",
-      37: "Western"
+      28: "Action 💪🏼 🔥",
+      27: "Horror 👻🔪🩸",
+      35: "Comedy 🤣 🍿",
+      10749: "Romance 💕 🫰🏻",
+      9648: "Mystery 🧐 🕵️ 🔍",
+      878: "Editor's Picks 👨🏻‍💻 😈",
+      16: "Animation 🎬 🎨",
+      10752: "War ⚔️ 🛡️ 🧨",
+      37: "Western 🔫 🤠",
     };
 
     const TVShowGenres = {
-      10759: "Action & Adventure",
-      16: "Animation",
-      35: "Comedy",
-      80: "Crime",
-      99: "Documentary",
-      18: "Drama",
-      10751: "Family",
-      10762: "Kids",
-      9648: "Mystery",
-      10763: "News",
-      10764: "Reality",
-      10765: "Sci-Fi & Fantasy",
-      10766: "Soap",
-      10767: "Talk",
-      10768: "War & Politics",
-      37: "Western"
+      10759: "Action 💪🏼 🔥",
+      35: "Comedy 🤣 🍿",
+      18: "Drama 🍿 🎬",
+      9648: "Mystery 🧠 🔮",
+      10765: "Editor's Picks 👨🏻‍💻 😈",
+      16: "Animation 🎬 🎨",
+      80: "Crime 🔪 🚨",
+      10768: "War ⚔️ 🛡️ 🧨",
+      37: "Western 🔫 🤠",
     };
     
   return (
     <SafeArea>
       <Heading>
-        {type === "movies" 
-          ? MovieGenres[movieID] + " " + type_genre[type]
-          : TVShowGenres[seriesID] + " " + type_genre[type]
-        }
+        {type === "movies" ? MovieGenres[movieID] : TVShowGenres[seriesID] }
       </Heading>
       <Container>
         {apiData && apiData.results.map((data, index) => (
-            <div key={data.id}>
+            <SubContainer key={data.id}>
                 <Card type={type} data={data}/>
-            </div>
+            </SubContainer>
         ))}
       </Container>
     </SafeArea>

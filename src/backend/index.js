@@ -8,7 +8,6 @@ import movie from './routes/tmdbApis/movie.js'
 import recommended from './routes/tmdbApis/recommended.js'
 import search from './routes/tmdbApis/search.js'
 import series from './routes/tmdbApis/series.js'
-import topRated from './routes/tmdbApis/topRated.js'
 import trending from './routes/tmdbApis/trending.js'
 
 dotenv.config();
@@ -23,7 +22,6 @@ app.use('/', movie)
 app.use('/', recommended)
 app.use('/', search)
 app.use('/', series)
-app.use('/', topRated)
 app.use('/', trending)
 
 app.listen(port, () => {

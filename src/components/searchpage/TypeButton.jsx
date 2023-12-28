@@ -3,7 +3,7 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 import { TiFlowSwitch } from "react-icons/ti";
 
-const Button = styled.button`${tw`flex absolute top-5 right-20 text-lg text-white font-bold px-4 py-2 rounded-3xl`}
+const Button = styled.button`${tw`fixed flex top-7 right-20 text-lg text-white font-bold px-4 py-2 rounded-3xl`}
 transition: background 0.5s ease;
 background: linear-gradient(to right, #cc021a, #FF004D);
 &:hover {
