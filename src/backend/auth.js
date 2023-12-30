@@ -1,57 +1,42 @@
-import { auth, database } from './firebase.js'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged,signOut } from "firebase/auth";
-import { ref, set } from "firebase/database";
+import { auth } from './firebase.js'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Register
-const firebaseRegister = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) =>{
-        const user = userCredential.user
-        // Create User data
-        set(ref(database, 'users/' + user.uid), {
-            email : email,
-        })
-        return user
-    })
-    .catch((error) => {
-        console.log(error.message)
-    })
+const firebaseRegister = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    const user = userCredential.user
+    localStorage.setItem('email', user.email)
+    localStorage.setItem('userId', user.uid)
+    return 
+  } catch (error) {
+    throw error.message
+  }
 }
 
 // Login
-const firebaseLogin = (email, password) => {
-
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) =>{
-        const user = userCredential.user
-        localStorage.setItem('userId', user.uid);
-        localStorage.setItem('userEmail', user.email);
-        return
-    })
-    .catch((error) => {
-        console.log(error.message)
-    })
+const firebaseLogin = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password)
+    const user = userCredential.user
+    localStorage.setItem('email', user.email)
+    localStorage.setItem('userId', user.uid)
+    return
+  } 
+  catch (error) {
+    throw error.message
+  }
 }
 
-export {firebaseLogin, firebaseRegister}
+const logout = async () => {
+  try {
+    const Logout = signOut(auth)
+    console.log('signed out')
+    return 
+  } 
+  catch (error) {
+    throw error
+  }
+}
 
-/*
-const auth = getAuth();
-signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  })
-*/
+export {firebaseLogin, firebaseRegister, logout}

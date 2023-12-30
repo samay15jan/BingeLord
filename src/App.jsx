@@ -4,19 +4,19 @@ import ContentPage from './pages/ContentPage'
 import Overflow from './components/contentpage/overflowMenu/Overflow';
 import SearchPage from './pages/SearchPage';
 import AccountPage from './pages/AccountPage'
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import AuthenticationPage from './pages/AuthenticationPage';
 
 function App() {
 
   const ScrollToTop = () => {
-    const { pathname } = useLocation();
-  
+    const { pathname } = useLocation()
+
     useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
+      window.scrollTo(0, 0)
+    }, [pathname])
   
-    return null;
+    return null
   };
   
   return (

@@ -1,7 +1,9 @@
 import react, {useState} from 'react'
+import { database } from '../../../../backend/firebase.js'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 import WatchButton from './WatchButton'
+import { ref, push } from "firebase/database";
 
 const CardContainer = styled.div`
   ${tw`relative p-2 rounded-md w-56 `}
@@ -74,6 +76,13 @@ function Card({ type, data }) {
     const words = data.overview?.split(' ');
     const cutWords = words?.slice(0, 15);
     const description = cutWords?.join(' ') + (words?.length > 15 ? '...' : '');
+    
+    //Firebase watchlist 
+    const userId = localStorage.getItem('userId')
+    const watchlistRef = ref(database,`users/${userId}/watchlist`);
+    const addToWatchlist = (data) => {
+      push(watchlistRef, { id: data.id });
+    }
 
     return (
         <CardContainer 
@@ -88,7 +97,7 @@ function Card({ type, data }) {
                     <FlexContainer1>
                       <OtherDetails>⭐ {data.vote_average.toFixed(0)/2}</OtherDetails>
                       <OtherDetails>{year}</OtherDetails>
-                      <AddButton>+</AddButton>
+                      <AddButton onClick={() => addToWatchlist(data)}>+</AddButton>
                     </FlexContainer1>
                     <Description>{description}</Description>
                     <WatchButton type={type} id={data.id}/>
