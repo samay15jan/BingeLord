@@ -5,6 +5,7 @@ import Overflow from './components/contentpage/overflowMenu/Overflow';
 import SearchPage from './pages/SearchPage';
 import AccountPage from './pages/AccountPage'
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AuthenticationPage from './pages/AuthenticationPage';
 
 function App() {
 
@@ -23,8 +24,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route index element={<div>HomePage</div>}/>
-        <Route path="/login" element={<div>Login</div>}/>
-        <Route path="/signup" element={<div>Signup</div>}/>
+        <Route path="/auth" element={<AuthenticationPage/>}/>
         <Route path="/search" element={<SearchPage />}/>
         <Route path="/account" element={<AccountPage />}/>
         <Route path="/404" element={<div>Not Found</div>}/>

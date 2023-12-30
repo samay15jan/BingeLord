@@ -11,6 +11,7 @@ import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import Similar from './Similar'
+import Footer from '../homepage/footer/Footer'
 
 const Container = styled.div`${tw``}`
 const CloseButton = styled.button`${tw`absolute z-10 right-5 top-5 px-1 py-1 rounded-lg bg-[#080808]`} 
@@ -66,6 +67,7 @@ const Main = ({ id }) => {
                 <Details data={apiData} type={type}/>   
                 <Media data={apiData} type={type}/>
                 <Similar data={apiData.similar} type={type}/>
+                <Footer />
             </Container>
         }
     </div>

@@ -2,23 +2,24 @@ import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
-const Container = styled.div`${tw`mx-10 absolute w-auto justify-center text-lg font-bold py-10`}`
-const Flex = styled.div`${tw`flex mt-5`}`
-const Icon1 = styled.img`${tw`w-20 mr-5`}`
-const Icon2 = styled.img`${tw`w-28 h-8`}`
+const Container = styled.div`${tw`flex absolute w-screen justify-center text-xl font-medium py-14`}`
+const SubContainer = styled.div`${tw`flex`}`
+const Bold = styled.a`${tw`font-bold ml-1 `}
+transition: color -0.3s ease;
+&:hover {
+  color: #d90948;
+}`
+const Icons = styled.div`${tw`flex ml-1 text-2xl`}`
+
 
 const Footer = () => {
   return (
     <Container>
-        Powered With :
-        <Flex>
-        <>
-            <Icon1 src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg'/>
-        </>
-        <>
-            <Icon2 src='https://vidsrc.to/assets/web/images/logo.png?v1' />
-        </>
-        </Flex>
+      <SubContainer>
+        Crafted By 
+        <Bold href='https://github.com/samay15jan' target='_blank'>Samay Kumar !</Bold>
+        <Icons>😎 ⚡</Icons>
+      </SubContainer>
     </Container>
   )
 }

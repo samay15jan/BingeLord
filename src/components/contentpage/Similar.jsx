@@ -12,13 +12,17 @@ const Container = styled.div`${tw`w-auto mx-10 grid grid-cols-6`}`
 const SubContainer = styled.div`${tw`mt-4`}`
 
 const Similar = ({ type, data }) => {
+  var limitedResults
+  if (data.results.length >= 18) {
+     limitedResults = data.results?.slice(0, 18)
+  }
   return (
     <SafeArea>
         <Heading>
             {type === "movies" ? "Similar Movies" : "Similar Series"}
         </Heading>
         <Container>
-            {data && data.results?.map((data, index) => (
+            {limitedResults.length > 0 && limitedResults?.map((data, index) => (
                 <SubContainer key={data.id}>
                     <Card type={type} data={data}/>
                 </SubContainer>
