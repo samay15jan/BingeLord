@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Card from './Card'
+import { useNavigate } from 'react-router-dom';
 
 const SafeArea = styled.div`${tw`my-10`}`
 const Heading = styled.div`${tw`ml-10 mt-10 my-5 text-3xl text-white font-bold`}`
@@ -12,6 +13,8 @@ const SubContainer = styled.div`${tw`my-5`}`
 
 const Genre = ({ type, movieID, seriesID }) => {
     const [apiData, setApiData] = useState()
+    
+    const navigate = useNavigate()
     const genreType = () => {
       if(type === 'movies'){
         return movieID

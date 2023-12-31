@@ -16,8 +16,11 @@ const Similar = ({ type, data }) => {
   if (data.results.length >= 18) {
      limitedResults = data.results?.slice(0, 18)
   }
+  
   return (
     <SafeArea>
+      { data.results.length > 0 &&
+       <>
         <Heading>
             {type === "movies" ? "Similar Movies" : "Similar Series"}
         </Heading>
@@ -28,6 +31,8 @@ const Similar = ({ type, data }) => {
                 </SubContainer>
             ))}
         </Container>
+       </>
+      }
     </SafeArea>
   )
 }
