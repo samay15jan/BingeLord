@@ -43,7 +43,7 @@ const Details = ({ data, type }) => {
           <Voting>{rating()}</Voting>
           <Overview>{finalOutput}</Overview>
           <WatchNow text={'Watch Now'} id={data.id} type={type}/>
-          <Info text={'+'}/>
+          <Info text={'+'} type={type} data={data.id}/>
     </Container>
   )
 }

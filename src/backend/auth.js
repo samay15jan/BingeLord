@@ -30,9 +30,9 @@ const firebaseLogin = async (email, password) => {
 
 const logout = async () => {
   try {
-    const Logout = signOut(auth)
+    const Logout = await signOut(auth)
     console.log('signed out')
-    return 
+    return
   } 
   catch (error) {
     throw error

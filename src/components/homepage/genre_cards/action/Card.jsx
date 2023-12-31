@@ -1,4 +1,4 @@
-import react, {useState} from 'react'
+import react, { useState } from 'react'
 import { database } from '../../../../backend/firebase.js'
 import styled from 'styled-components'
 import tw from 'twin.macro'
@@ -55,6 +55,7 @@ const AddButton = styled.button`
   ${tw`bg-[#121212] mx-2 rounded-xl px-3 text-lg text-slate-100 font-bold`}
   &:hover {
     background-color: #c9c9c9;
+    color: black;
   }
 `;
 
@@ -62,9 +63,9 @@ const Description = styled.div`
   ${tw`absolute bottom-16 mx-2 mb-2 text-slate-100 font-medium`}
 `;
 
-
-function Card({ type, data }) {
+function Card ({ type, data }) {
     const [showDetails, setShowDetails] = useState(false)
+
     var year 
     if(type === 'movies'){
       year = new Date(data.release_date).getFullYear()
@@ -81,9 +82,12 @@ function Card({ type, data }) {
     const userId = localStorage.getItem('userId')
     const watchlistRef = ref(database,`users/${userId}/watchlist`);
     const addToWatchlist = (data) => {
-      push(watchlistRef, { id: data.id });
+      push(watchlistRef, { 
+        type: type,
+        id: data.id
+      });
     }
-
+  
     return (
         <CardContainer 
           onMouseEnter={() => setShowDetails(true)}
