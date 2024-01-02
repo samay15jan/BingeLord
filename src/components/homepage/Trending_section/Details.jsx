@@ -4,12 +4,12 @@ import tw from 'twin.macro'
 import WatchNow from './WatchNow'
 import Info from './Info'
 
-const Container = styled.div`${tw`absolute ml-14 mt-48 w-[600px]`}`
+const Container = styled.div`${tw`w-screen h-screen absolute lg:ml-24 mt-72 lg:mt-48 max-w-[600px]`}`
 const Trending = styled.div`${tw`text-lg px-5 text-gray-400`}`
-const Title = styled.div`${tw`text-5xl font-bold p-5`}`
-const Text1 = styled.div`${tw`text-lg ml-5 mt-4 font-semibold`}`
-const Voting = styled.div`${tw`text-xl font-bold ml-5`}`
-const Overview = styled.div`${tw`mt-4 text-lg ml-5 mr-10 text-gray-400`}`
+const Title = styled.div`${tw`text-4xl lg:text-5xl font-bold p-5`}`
+const Text = styled.div`${tw`text-xl lg:text-xl ml-5 mt-4 font-semibold`}`
+const Voting = styled.div`${tw`text-2xl font-bold ml-5`}`
+const Overview = styled.div`${tw`mt-8 lg:mt-4 text-lg ml-5 mr-10 text-gray-400`}`
 
 const Details = ({ data, type }) => {
   const contentType = () => {
@@ -39,7 +39,7 @@ const Details = ({ data, type }) => {
     <Container>
           <Trending>{contentType()}</Trending>
           <Title>{type === 'tv' ? data.name : data.title}</Title>
-          <Text1>TMDB</Text1>
+          <Text>TMDB</Text>
           <Voting>{rating()}</Voting>
           <Overview>{finalOutput}</Overview>
           <WatchNow text={'Watch Now'} id={data.id} type={type}/>

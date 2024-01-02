@@ -7,9 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const SafeArea = styled.div`${tw`my-10`}`
 const Heading = styled.div`${tw`ml-10 mt-10 my-5 text-3xl text-white font-bold`}`
-const Container = styled.div`${tw`w-auto mx-10 grid-flow-col grid overflow-x-auto`}`
+const Container = styled.div`${tw`w-auto mx-2 lg:mx-10 grid-flow-col grid overflow-x-auto`}`
 const SubContainer = styled.div`${tw`my-5`}`
-
 
 const Genre = ({ type, movieID, seriesID }) => {
     const [apiData, setApiData] = useState()

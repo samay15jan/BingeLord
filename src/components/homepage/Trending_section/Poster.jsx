@@ -4,11 +4,11 @@ import tw from 'twin.macro'
 import ColorThief from 'colorthief';
 
 const Container = styled.button`
-${tw`absolute z-50 right-0 bottom-0 p-10 mb-20 rounded-xl mr-20 backdrop-blur-xl shadow-sm shadow-white`}
+${tw`hidden lg:block absolute z-50 right-24 bottom-16 top-24 p-10 rounded-xl backdrop-blur-xl shadow-sm shadow-white`}
 `
 
 const ImageContainer = styled.img`
-${tw`w-80 rounded-xl`}
+${tw`transition-transform relative w-72 rounded-xl`}
 `
 
 const Poster = ({image}) => {
@@ -26,9 +26,24 @@ const Poster = ({image}) => {
     };
   }, [image]);
 
+  // Hover Effect
+  const [imgHovered, setImgHovered] = useState(false)
+  const handleMouseEnter = () => {
+      setImgHovered(true)
+  }
+  const handleMouseLeave = () => {
+      setImgHovered(false)
+  }
+
   return (
-    <Container style={dominantColor && {boxShadow: `0 0 50px rgba(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]}, 0.5)`,}}>
-        <ImageContainer src={`https://image.tmdb.org/t/p/original${image}`} alt="Poster" />
+    <Container style={dominantColor && {boxShadow: `0 0 500px rgba(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]}, 0.5)`,}}>
+        <ImageContainer 
+          src={`https://image.tmdb.org/t/p/original${image}`} 
+          alt="Poster"
+          className={`${imgHovered ? 'transform scale-110' : ''}`} 
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
     </Container>
   )
 }

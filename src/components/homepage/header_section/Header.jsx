@@ -6,11 +6,10 @@ import Account from './Account'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
-const HeaderContainer = styled.div`${tw`absolute z-50 w-screen flex justify-center cursor-pointer mt-4`}`
+const HeaderContainer = styled.div`${tw`absolute z-50 w-screen flex justify-center mt-4`}`
 const CenterLogo = styled.img`${tw`w-48 mx-48`}`
 
 const Header = () => {
-
   return (
     <HeaderContainer>
         <Button text={"Movies"} type={"movies"}/>

@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-const BackgroundImage = styled.img`${tw`opacity-10`}`
+const BackgroundImage = styled.img`${tw`object-cover w-screen h-screen opacity-20`}`
 
-function Background({image}) {
+function Background({ image }) {
     return (
         <>
         {image && 
-            <BackgroundImage src={`https://image.tmdb.org/t/p/original${image}`}/>
+            <BackgroundImage loading='eager' src={`https://image.tmdb.org/t/p/original${image}`}/>
         }
         </>
     )

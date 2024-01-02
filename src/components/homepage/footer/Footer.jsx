@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
-const Container = styled.div`${tw`flex absolute w-screen justify-center text-xl font-medium py-14`}`
+const Container = styled.div`${tw`flex absolute w-screen justify-center text-lg lg:text-xl font-medium py-14`}`
 const SubContainer = styled.div`${tw`flex`}`
-const Bold = styled.a`${tw`font-bold ml-1 `}
+const Bold = styled.a`${tw`font-bold ml-1`}
 transition: color -0.3s ease;
 &:hover {
   color: #d90948;
