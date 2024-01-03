@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import { IoMdClose } from "react-icons/io";
 
-const Button = styled.button`${tw`hover:animate-spin absolute z-40 ml-40 mt-4 px-3 py-1 rounded-3xl bg-[#080808]`} 
+const Button = styled.button`${tw`hover:animate-spin absolute z-40 ml-36 lg:ml-40 mt-4 px-3 py-1 rounded-3xl bg-[#080808]`} 
   transition: background 0.1s ease;
   &:hover {
     background-color: white;

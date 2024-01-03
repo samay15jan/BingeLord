@@ -12,11 +12,11 @@ import { IoMdClose } from "react-icons/io";
 
 const SafeArea = styled.div`${tw`overflow-x-hidden w-auto lg:mx-5`}`
 const FixedContainer = styled.div`${tw`w-screen h-36 fixed z-50 bg-[#080808]`}`
-const Heading = styled.div`${tw`fixed text-2xl ml-96 mt-24 font-bold`}`
-const Container = styled.div`${tw`absolute top-32 right-12 w-screen lg:w-2/3 grid grid-cols-2 lg:grid-cols-4`}`
+const Heading = styled.div`${tw`fixed text-xl lg:text-2xl ml-5 lg:ml-96 mt-28 lg:mt-24 font-bold`}`
+const Container = styled.div`${tw`absolute top-32 lg:right-12 w-screen lg:w-2/3 grid grid-cols-2 lg:grid-cols-4`}`
 const SubContainer = styled.div`${tw`mt-4`}`
 const OverFlowMenu = styled.div`${tw`bg-black bg-opacity-100 fixed z-50 w-screen h-screen grid grid-cols-1 justify-center text-left text-4xl py-32`}`
-const Button = styled.button`${tw`lg:hidden absolute z-50 left-5 top-10`}`
+const Button = styled.button`${tw`lg:hidden absolute z-50 left-5 top-12`}`
 
 const Search = () => {
   const [apiData, setApiData] = useState()
@@ -94,7 +94,7 @@ const Search = () => {
       <FixedContainer>
         {/* For Mobile Screens */}
         <Button onClick={() => setOpen(!open)}>
-          <MdMenu size={40} onClick={() => setOpen(!open)}/>
+          <MdMenu size={30} onClick={() => setOpen(!open)}/>
         </Button>
         {open 
           ? <OverFlowMenu>

@@ -6,7 +6,7 @@ import WatchButton from './WatchButton'
 import { ref, push } from "firebase/database";
 
 const CardContainer = styled.div`
-  ${tw`relative p-2 rounded-md w-56`}
+  ${tw`relative p-2 rounded-md w-52 lg:w-56`}
 `;
 
 const SubContainer = styled.div`
@@ -40,7 +40,7 @@ const Image = styled.img`
 `;
 
 const FlexContainer1 = styled.div`
-  ${tw`flex absolute top-2`}
+  ${tw`flex absolute top-2 ml-2 lg:ml-0`}
 `;
 
 const FlexContainer2 = styled.div`
@@ -48,7 +48,7 @@ const FlexContainer2 = styled.div`
 `;
 
 const OtherDetails = styled.div`
-  ${tw`bg-[#121212] mx-2 rounded-xl p-1 px-2 lg:px-3 text-sm text-slate-100 font-medium`}
+  ${tw`bg-[#121212] mx-1 lg:mx-2 rounded-xl p-1 px-2 lg:px-3 text-sm text-slate-100 font-medium`}
 `;
 
 const AddButton = styled.button`

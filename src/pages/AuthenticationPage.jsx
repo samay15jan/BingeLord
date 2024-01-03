@@ -9,7 +9,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Logo= styled.img`${tw`w-56 absolute ml-5 z-50 shadow-2xl`}`
 const Container = styled.div`${tw`w-screen h-auto flex justify-center `}`
-const Background= styled.img`${tw`w-screen h-screen fixed opacity-40 blur-sm`}`
+const Background= styled.img`${tw`w-screen h-screen fixed object-cover opacity-40 blur-sm`}`
 const SubContainer = styled.div`${tw`px-10 pt-10 pb-20 w-96 my-32 lg:my-20 bg-black relative shadow-2xl bg-opacity-80`}`
 const Heading = styled.div`${tw` py-5 text-4xl font-medium `}`
 const Form = styled.form`${tw`grid grid-cols-1 my-5`}`
