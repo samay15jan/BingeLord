@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://bingelord-backend.onrender.com/",
+        target: "https://bingelord-backend.onrender.com",
         changeOrigin: true,
         secure: false,
       },
