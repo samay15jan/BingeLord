@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import { useNavigate } from 'react-router-dom';
 
 const Button = styled.button`
-${tw`absolute z-50 shadow-2xl shadow-[#c20432] text-white font-bold text-xl px-8 py-2 ml-8 mt-10 rounded-xl`}
+${tw`absolute z-40 shadow-2xl shadow-[#c20432] text-white font-bold text-xl px-8 py-2 ml-8 mt-10 rounded-xl`}
 transform: skew(-14deg);
 transition: background 0.5s ease;
 background: linear-gradient(to right, #cc021a, #FF004D);

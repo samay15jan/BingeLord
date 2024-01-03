@@ -4,11 +4,11 @@ import tw from 'twin.macro'
 import ColorThief from 'colorthief';
 
 const Container = styled.button`
-${tw`hidden lg:block absolute z-50 right-24 bottom-16 top-24 p-10 rounded-xl backdrop-blur-xl shadow-sm shadow-white`}
+${tw`hidden lg:block absolute z-40 right-24 bottom-14 top-24 p-10 rounded-xl backdrop-blur-xl shadow-sm shadow-white`}
 `
 
 const ImageContainer = styled.img`
-${tw`transition-transform relative w-72 rounded-xl`}
+${tw`transition-transform relative w-64 rounded-xl`}
 `
 
 const Poster = ({image}) => {

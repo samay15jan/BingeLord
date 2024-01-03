@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-const Container = styled.div`${tw`absolute right-0 top-80 mt-2`}`
+const Container = styled.div`${tw`lg:absolute right-0 top-80 mt-2 p-4 lg:p-0 my-20 lg:my-0`}`
 const Flex = styled.div`${tw`flex mx-10 font-bold`}`
-const Button = styled.button`${tw`flex text-lg mx-10 font-bold bg-[#101010] px-4 p-1 rounded-lg`}
+const Button = styled.button`${tw`flex text-lg mx-5 lg:mx-10 font-bold bg-[#101010] px-6 lg:px-4 p-2 lg:p-1 rounded-lg`}
 &:hover {
   background-color: #353535;
   color: white;
@@ -15,16 +15,16 @@ const Grid = styled.div`
 ${tw`grid grid-cols-2`}
 `
 const Image1 = styled.img`
-${tw`ml-16 mt-5 w-72 h-32 rounded-xl`}
+${tw`lg:ml-16 mt-5 w-screen h-48 lg:w-72 lg:h-32 rounded-xl`}
 `
 const Image2 = styled.img`
-  ${tw`ml-16 mt-5 w-36 h-32 rounded-xl object-cover`}
+  ${tw`lg:ml-16 mt-5 w-44 h-36 lg:w-36 lg:h-32 rounded-xl object-cover`}
 `
 const Image3 = styled.img`
-  ${tw`ml-16 mt-5 w-36 h-32 rounded-xl object-cover`}
+  ${tw`lg:ml-16 mt-5 w-44 h-32 lg:w-36 lg:w-36 lg:h-32 rounded-xl object-cover`}
 `
 const Image4 = styled.img`
-${tw`ml-2 mt-5 w-[135px] h-[275px] rounded-xl object-cover`}
+${tw`lg:ml-2 mt-5 h-[295px] lg:w-[135px] lg:h-[275px] rounded-xl object-cover`}
 `
 
 const Media = ({ data, type }) => {

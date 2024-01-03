@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import axios from 'axios';
 import CloseButton from './CloseButton';
 import Media from './Media';
 
 const Container = styled.div`${tw``}`
-const Image = styled.img`${tw`px-10 py-10 w-screen h-screen justify-center`}`
-const StreamIframe = styled.iframe`${tw`px-10 py-10 w-screen h-screen justify-center`}`
-const YoutubeIframe = styled.iframe`${tw`px-10 py-10 w-screen h-screen justify-center`}`
+const Image = styled.img`${tw`mt-20 lg:mt-0 w-screen lg:h-screen justify-center`}`
+const StreamIframe = styled.iframe`${tw`w-screen h-screen justify-center`}`
+const YoutubeIframe = styled.iframe`${tw`w-screen h-screen h-96 lg:h-screen justify-center`}`
 
 const Overflow = () => {
   const { type, id, menu, url } = useParams();

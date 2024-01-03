@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 
-const Container = styled.div`${tw`mx-7 fixed bg-[#161616] w-1/5 mt-7 p-5 rounded-3xl shadow-2xl`}`
+const Container = styled.div`${tw`mt-24 lg:mt-7 mx-7 fixed bg-[#161616] w-full lg:w-1/5  p-5 rounded-3xl shadow-2xl`}`
 const Heading = styled.div`${tw`text-xl font-bold ml-2 `}`
 const Flex2 = styled.div`${tw`flex mx-2 my-4`}`
-const CheckBox = styled.input`${tw`w-5`} accent-color: #cc021a`
+const CheckBox = styled.input`${tw`w-10 lg:w-5`} accent-color: #cc021a`
 const Text = styled.div`${tw`text-lg mx-4 text-gray-400`}`
 
 const movieGenre = {

@@ -13,8 +13,8 @@ import { useParams } from 'react-router-dom'
 import Similar from './Similar'
 import Footer from '../homepage/footer/Footer'
 
-const Container = styled.div`${tw``}`
-const CloseButton = styled.button`${tw`absolute z-10 right-5 top-5 px-1 py-1 rounded-lg bg-[#080808]`} 
+const Container = styled.div`${tw`overflow-x-hidden`}`
+const CloseButton = styled.button`${tw`absolute z-10 right-5 top-10 lg:top-5 px-1 py-1 rounded-lg bg-[#080808]`} 
   transition: background 0.1s ease;
   &:hover {
     background-color: #252525;
@@ -59,12 +59,12 @@ const Main = ({ id }) => {
         {apiData && 
             <Container>
                 <CloseButton onClick={close}>
-                    <IoMdClose size={30}/>
+                  <IoMdClose size={30}/>
                 </CloseButton>
                 <BackdropImage image={apiData.backdrop_path}/>
                 <Poster image={apiData.poster_path}/> 
-                <Cast data={apiData}/>
                 <Details data={apiData} type={type}/>   
+                <Cast data={apiData}/>
                 <Media data={apiData} type={type}/>
                 <Similar data={apiData.similar} type={type}/>
                 <Footer />

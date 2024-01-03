@@ -3,21 +3,22 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import TrailerButton from './TrailerButton'
 import PlayButton from './PlayButton'
+import Info from '../homepage/Trending_section/Info'
 
-const Container = styled.div`${tw`absolute top-14 left-96 z-50 `}`
-const Year = styled.div`${tw`text-sm ml-5 font-semibold`}`
-const Title = styled.div`${tw`text-4xl font-bold px-5 py-4 w-[550px]`}`
+const Container = styled.div`${tw`relative lg:absolute top-14 left-2 lg:left-96 xl:left-96 2xl:left-96 z-50`}`
+const Year = styled.div`${tw`text-lg lg:text-sm ml-5 font-semibold`}`
+const Title = styled.div`${tw`text-4xl font-bold px-5 py-4 w-screen lg:w-[550px]`}`
 const Genre = styled.div`${tw`flex text-sm ml-4 font-semibold`}`
 const GenreType = styled.div`${tw`mx-1`}`
 const Text1 = styled.div`${tw`text-lg ml-5 mt-4 font-semibold`}`
 const Voting = styled.div`${tw`text-xl font-bold ml-5`}`
 const Text2 = styled.div`${tw`text-lg ml-5 mt-12 font-semibold`}`
-const Overview = styled.div`${tw`mt-4 text-sm ml-5 mr-10 text-gray-100 opacity-70 w-[550px]`}`
-const Text3 = styled.div`${tw`text-lg ml-5 mt-28 mb-5 font-semibold`}`
-const GridContainer1 = styled.div`${tw`grid grid-cols-2 mt-2 justify-between w-[550px]`}`
+const Overview = styled.div`${tw`mt-4 text-sm lg:ml-5 lg:mr-10 text-gray-100 opacity-70 px-5 lg:px-0 w-screen lg:w-[550px]`}`
+const Text3 = styled.div`${tw`text-lg ml-5 mt-32 lg:mt-28 mb-5 font-semibold`}`
+const GridContainer1 = styled.div`${tw`grid grid-cols-2 mt-2 justify-between w-screen lg:w-[550px]`}`
 const GridContainer2 = styled.div`${tw`grid grid-cols-1 mt-1`}`
 const Text4 = styled.div`${tw`text-sm ml-5 font-semibold`}`
-const Text5 = styled.div`${tw`text-sm text-gray-100 opacity-70 text-right`}`
+const Text5 = styled.div`${tw`text-sm mr-10 lg:mr-0 text-gray-100 opacity-70 text-right`}`
 
 const Details = ({ data, type }) => {
 
@@ -95,6 +96,9 @@ const Details = ({ data, type }) => {
               /> 
             : ''
           }
+          <div className='ml-24'>
+            <Info text={'+'} type={type} data={data.id}/>
+          </div>
 
           <Text3>More Details</Text3>
           

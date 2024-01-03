@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import ColorThief from 'colorthief';
 
 const Container = styled.div`
-${tw`absolute z-50 left-14 top-14 mb-20 rounded-xl mr-20 backdrop-blur-xl shadow-sm shadow-white`}
+${tw`hidden lg:block xl:block 2xl:block absolute z-50 left-14 top-14 mb-20 rounded-xl mr-20 backdrop-blur-xl shadow-sm shadow-white`}
 `
 
 const ImageContainer = styled.img`

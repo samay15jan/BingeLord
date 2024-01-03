@@ -5,14 +5,14 @@ import axios from 'axios'
 import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 
 const Container = styled.div`${tw``}`
-const Image = styled.img`${tw`px-10 py-10 w-screen h-screen justify-center`}`
-const YoutubeIframe = styled.iframe`${tw`px-10 py-10 w-screen h-screen justify-center`}`
-const NextButton = styled.button`${tw`absolute left-10 top-1/2 font-bold bg-[#101010] py-5 rounded-r-lg`}
+const Image = styled.img`${tw`w-screen lg:h-screen mt-80 lg:mt-0 justify-center`}`
+const YoutubeIframe = styled.iframe`${tw`lg:px-10 lg:py-10 w-screen h-screen justify-center`}`
+const NextButton = styled.button`${tw`absolute left-0 top-1/2 font-bold bg-[#101010] py-5 rounded-r-lg`}
 &:hover {
   background-color: #353535;
   color: white;
 }`
-const PreviousButton = styled.button`${tw`absolute right-10 top-1/2 font-bold bg-[#101010] py-5 rounded-l-lg`}
+const PreviousButton = styled.button`${tw`absolute right-0 top-1/2 font-bold bg-[#101010] py-5 rounded-l-lg`}
 &:hover {
   background-color: #353535;
   color: white;

@@ -7,12 +7,16 @@ import TypeButton from './TypeButton'
 import Card from '../homepage/genre_cards/action/Card'
 import CloseButton from './CloseButton'
 import Genre from './Genre'
+import { MdMenu } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 
-const SafeArea = styled.div`${tw`overflow-x-hidden w-auto mx-5`}`
+const SafeArea = styled.div`${tw`overflow-x-hidden w-auto lg:mx-5`}`
 const FixedContainer = styled.div`${tw`w-screen h-36 fixed z-50 bg-[#080808]`}`
 const Heading = styled.div`${tw`fixed text-2xl ml-96 mt-24 font-bold`}`
-const Container = styled.div`${tw`absolute top-32 right-12 w-2/3 grid grid-cols-4`}`
+const Container = styled.div`${tw`absolute top-32 right-12 w-screen lg:w-2/3 grid grid-cols-2 lg:grid-cols-4`}`
 const SubContainer = styled.div`${tw`mt-4`}`
+const OverFlowMenu = styled.div`${tw`bg-black bg-opacity-100 fixed z-50 w-screen h-screen grid grid-cols-1 justify-center text-left text-4xl py-32`}`
+const Button = styled.button`${tw`lg:hidden absolute z-50 left-5 top-10`}`
 
 const Search = () => {
   const [apiData, setApiData] = useState()
@@ -22,6 +26,11 @@ const Search = () => {
   const [secondApi, setSecondApi] = useState('api/trendingMovie')
   const [genreFilters, setGenreFilters] = useState([])
   const [heading, setHeading] = useState('Latest Movies')
+  const [open, setOpen] = useState()
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   const toggleMenu = () => {
     setMenu(!menu)
@@ -83,9 +92,28 @@ const Search = () => {
   return (
     <SafeArea>
       <FixedContainer>
-        <Genre type={Text} genreFilter={genreFilters} onFilterChange={setGenreFilters}/>
+        {/* For Mobile Screens */}
+        <Button onClick={() => setOpen(!open)}>
+          <MdMenu size={40} onClick={() => setOpen(!open)}/>
+        </Button>
+        {open 
+          ? <OverFlowMenu>
+              <Button onClick={() => setOpen(!open)}>
+                <IoMdClose size={40}/>
+              </Button>
+              <Genre type={Text} genreFilter={genreFilters} onFilterChange={setGenreFilters}/>
+              <TypeButton onclick={toggleMenu} text={Text}/>
+            </OverFlowMenu>
+          : ""
+        }
+
+        {/* For Desktop Screens */}
+        <div className='hidden lg:block'>
+          <Genre type={Text} genreFilter={genreFilters} onFilterChange={setGenreFilters}/>
+          <TypeButton onclick={toggleMenu} text={Text}/>
+        </div>
+
         <SearchBar onsubmit={handleSubmit} onchange={handleInput}/>
-        <TypeButton onclick={toggleMenu} text={Text}/>
         <CloseButton type={Text}/>
         <Heading>{heading}</Heading>
       </FixedContainer>
