@@ -15,13 +15,15 @@ const app = express()
 const port = process.env.PORT || 3000
 
 const corsOptions = {
-    origin: "https://bingelord-backend.onrender.com",
+    origin: ["https://bingelord.onrender.com", "https://bingelord.web.app"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 204,
 };
-  
-app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions));
+app.use('*', cors(corsOptions));
+
 app.use('/', discover)
 app.use('/', images)
 app.use('/', movie)
