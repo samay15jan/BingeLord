@@ -14,7 +14,14 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(cors())
+const corsOptions = {
+    origin: "https://bingelord-backend.onrender.com",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+    optionsSuccessStatus: 204,
+};
+  
+app.use(cors(corsOptions));
 app.use('/', discover)
 app.use('/', images)
 app.use('/', movie)
