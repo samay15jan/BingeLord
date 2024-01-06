@@ -6,12 +6,10 @@ Welcome to Binge Lord, a project born out of my passion for movies/series and th
 
 ## Demo
 
-Explore Binge Lord's captivating UI at [https://bingelord.onrender.com](https://bingelord.onrender.com).
+Explore Binge Lord's captivating UI at [https://bingelord.onrender.com](https://bingelord.onrender.com)
 
 
-
-https://github.com/samay15jan/BingeLord/assets/97271429/75b3f546-72a1-4ade-b21d-60614173806d
-
+https://github.com/samay15jan/BingeLord/assets/97271429/568d2228-bc2a-421a-89bf-fe5e7ff16303
 
 
 ## Features
@@ -32,6 +30,7 @@ https://github.com/samay15jan/BingeLord/assets/97271429/75b3f546-72a1-4ade-b21d-
 - **Responsive Design**: Experience a seamless UI on both desktop and mobile.
 
 
+
 ## Technologies Used
 
 
@@ -40,6 +39,7 @@ https://github.com/samay15jan/BingeLord/assets/97271429/75b3f546-72a1-4ade-b21d-
 **Server:** Node, Firebase, Express (As a proxy to make API calls)
 
 **Hosting:** Render(Seperate Client and Server), Cron-Job (to keep server alive)
+
 
 
 ## Run Locally
