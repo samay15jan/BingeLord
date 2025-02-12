@@ -1,19 +1,14 @@
-# Binge Lord - Movie/Series Streaming Platform
-
+<p align="center">
+  <img src='src/assets/Logo.png' alt='' width='350'>
+</p>
 
 Welcome to Binge Lord, a project born out of my passion for movies/series and the desire to create an immersive streaming experience. Leveraging TMDB for movie data and Vidsrc for streaming, Binge Lord is a feature-packed platform built with React.
 
-
 ## Demo
-
-Explore Binge Lord's captivating UI at [https://bingelord.onrender.com](https://bingelord.onrender.com)
-
 
 https://github.com/samay15jan/BingeLord/assets/97271429/568d2228-bc2a-421a-89bf-fe5e7ff16303
 
-
 ## Features
-
 
 - **Movie/Series Information**: Utilizes [TMDB](https://developer.themoviedb.org/docs/getting-started) API to fetch data.
 

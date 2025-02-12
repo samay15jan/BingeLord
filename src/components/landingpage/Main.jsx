@@ -1,115 +1,122 @@
-import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
-import Logo from '../../assets//Logo.png'
-import BackgroundImage from '../../assets/landingPage/logo.png'
-import Background from '../../assets/landingPage/background.png'
-import Image1 from '../../assets/landingPage/1.png'
-import Image2 from '../../assets/landingPage/2.png'
-import Image3 from '../../assets/landingPage/3.png'
-import Image4 from '../../assets/landingPage/4.png'
-import Image5 from '../../assets/landingPage/5.png'
-import Footer from '../homepage/footer/Footer'
+import BingelordLogo from '../../assets/Logo.png'
+import { useEffect, useState } from 'react'
+import RecentActivity from './RecentActivity'
+import axios from 'axios'
+import './index.css'
+/* ------------------------ fonts ----------------------- */
+// inter
+import "@fontsource/inter/100.css";
+import "@fontsource/inter/200.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/800.css";
+import "@fontsource/inter/900.css";
+// space mono
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
 import { useNavigate } from 'react-router-dom'
-import SectionLeft from './SectionLeft'
-import SectionRight from './SectionRight'
-import { FaArrowDown } from "react-icons/fa"
+import { FaGithub, FaYoutube } from 'react-icons/fa'
+import ExpressLogo from '../../assets/icons/express.svg'
+import FirebaseLogo from '../../assets/icons/firebase.svg'
+import NodeJSLogo from '../../assets/icons/node-js.svg'
+import ReactRouterLogo from '../../assets/icons/react-router.svg'
+import ReactLogo from '../../assets/icons/react.svg'
+import StyledLogo from '../../assets/icons/styled.svg'
+import TailwindLogo from '../../assets/icons/tailwind.svg'
+import TwinMacroLogo from '../../assets/icons/twin-macro.svg'
+import ViteLogo from '../../assets/icons/vite.svg'
 
-const Container = styled.div`${tw`bg-[#000000]`}`
-const LogoContainer = styled.div`${tw`absolute z-50 w-screen flex justify-center`}`
-const TopLogo = styled.img`${tw`mt-8 lg:mt-2 w-48`}`
-const BackgroundContainer = styled.img`${tw`w-screen h-screen absolute opacity-30 lg:opacity-50 ring-4 ring-[#a60516]`}`
-const SubContainer = styled.div`${tw`h-screen grid lg:grid-cols-2 lg:ml-48`}`
-const Text = styled.div`${tw`text-white mt-48 lg:mt-32 mx-8 lg:mx-0 lg:ml-10 text-4xl lg:text-5xl font-bold`}`
-const SubHeading = styled.div`${tw`text-left my-10 text-xl font-medium text-gray-400`}`
-const TryNow = styled.div`${tw`flex justify-center text-xl text-center shadow-sm shadow-[#a60516]`}`
-const Image = styled.img`${tw`overflow-hidden absolute bottom-20 lg:bottom-10 lg:right-14`}`
-const DownIcon = styled.div`${tw`absolute bottom-5 w-screen flex justify-center animate-bounce opacity-60`}`
-const Title = styled.div`${tw`hidden lg:block mt-4`}`
-const Button1 = styled.div`${tw`absolute text-center w-32 mt-1 ml-2 mb-32 p-2 text-xl font-bold shadow-md shadow-[#8f1835] h-12 rounded-lg`}
-transition: background 0.5s ease;
-background: linear-gradient(to right, #d91432, #e61b48);
-&:hover {
-    background: linear-gradient(to right, #252525, #252525);
-    color: #d9d4d5;
-}
-&:focus {
-  outline: 1px solid #e61b48;
-}`
-const Button2 = styled.div`${tw`hidden lg:block text-center w-32 mt-1 ml-2 mb-32 p-2 text-xl font-bold shadow-md shadow-[#8f1835] h-12 rounded-lg`}
-transition: background 0.5s ease;
-background: linear-gradient(to right, #d91432, #e61b48);
-&:hover {
-    background: linear-gradient(to right, #252525, #252525);
-    color: #d9d4d5;
-}
-&:focus {
-  outline: 1px solid #e61b48;
-}`
-
-const Main = () => {
-  // Navigation
+export default function Home() {
+  const [apiData, setApiData] = useState()
+  const [bgOpacity, setBgOpacity] = useState(1)
   const navigate = useNavigate()
-  const handleClick = () => {
-    navigate('auth')
-  }
-  
+
+  const handleRedirect = (url) => {
+    window.open(url, "_blank");
+  };
+
+  useEffect(() => {
+    axios.get(`https://bingelord-backend.onrender.com/api/trendingMovie`)
+      .then((response) => {
+        setApiData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const newOpacity = Math.max(0, 1 - scrollY / 500)
+      setBgOpacity(newOpacity)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const techStack = [
+    { name: 'React', logo: ReactLogo, url: 'https://react.dev/' },
+    { name: 'Tailwind CSS', logo: TailwindLogo, url: 'https://tailwindcss.com/' },
+    { name: 'Firebase', logo: FirebaseLogo, url: 'https://firebase.google.com/' },
+    { name: 'Node.js', logo: NodeJSLogo, url: 'https://nodejs.org/' },
+    { name: 'Express', logo: ExpressLogo, url: 'https://expressjs.com/' },
+    { name: 'React Router', logo: ReactRouterLogo, url: 'https://reactrouter.com/' },
+    { name: 'Styled Components', logo: StyledLogo, url: 'https://styled-components.com/' },
+    { name: 'Twin Macro', logo: TwinMacroLogo, url: 'https://github.com/ben-rogerson/twin.macro' },
+    { name: 'Vite', logo: ViteLogo, url: 'https://vitejs.dev/' },
+  ];
+
   return (
-    <Container>
-      <LogoContainer>
-        <TopLogo src={Logo} alt="Logo" />
-      </LogoContainer>
-      <BackgroundContainer src={Background} alt="img" />
-
-      <SubContainer>
-        <Text>
-          Discover a Cinematic Wonderland
-          <SubHeading>Prepare for a Rollercoaster of Emotions, Laughter, and 'Just One More Episode' Excuses.</SubHeading>
-          <Button1 onClick={handleClick}>Explore</Button1>
-        </Text>
-      </SubContainer>
-      <Image src={BackgroundImage} alt="img" />
-
-      <DownIcon>
-        <FaArrowDown size={20}/>
-      </DownIcon>
-
-      <SectionRight 
-        src={Image1}
-        heading={"Dive into the Cinematic Universe"}
-        paragraph={"Immerse yourself in the latest and trending movies and series. It's your personal gateway to an unparalleled streaming experience."}
-      />
-      
-      <SectionLeft 
-        src={Image2}
-        heading={"Experience Like Never Before"}
-        paragraph={"The cutting-edge UI ensures seamless navigation, allowing you to effortlessly dive into the heart of the story."}
-      />
-      <SectionRight 
-        src={Image3}
-        heading={"Curate Your Cinematic Escape"}
-        paragraph={"Indulge in a tailored movie experience on Bingelord's genre-based movie list. Save your favorites effortlessly to your watchlist for later enjoyment."}
-      />
-      < SectionLeft
-        src={Image4}
-        heading={"Experience Like Never Before"}
-        paragraph={"Whether you're in the mood for a blockbuster movie or a binge-worthy series, Bingelord's search page transforms your queries into a personalized cinematic journey."}
-      />
-      <SectionRight 
-        src={Image5}
-        heading={"Personalize Your Journey"}
-        paragraph={"Explore, curate, and enjoy – your cinematic adventure is now in your hands. With watch list have your next binge-worthy content ready."}
-      />
-
-      <TryNow>
-        <Title>Start Your Cinematic Odyssey Today!</Title>
-        <Button2 onClick={handleClick}>Try Now !</Button2>
-      </TryNow>
-
-      <Footer />
-
-    </Container>
+    <div className='bg-[#111113] overflow-x-hidden min-h-screen w-screen layout flex flex-col font-inter'>
+      <div className="select-none font-space-mono tracking-tight px-4">
+        <div className="relative flex flex-col items-center justify-around gap-y-11 lg:flex-row min-h-[90vh] animate-fade">
+          <div className="hidden lg:block z-1 absolute top-[-100px] text-[15rem] md:text-[14rem] text-black stroke-text text-center w-full whitespace-nowrap overflow-hidden" style={{ opacity: bgOpacity }}>
+            見る王狂見る王狂
+          </div>
+          <div className="block lg:hidden z-1 absolute top-[-150px] text-[15rem] stroke-text text-center w-full" style={{ opacity: bgOpacity }}>
+            狂見る
+          </div>
+          <div className="hidden lg:block z-1 absolute text-[8rem] md:text-[15rem] stroke-text text-center w-full" style={{ opacity: bgOpacity }}>
+            BINGELORD
+          </div>
+          <div className="hidden lg:block z-1 absolute bottom-[-150px] text-[15rem] md:text-[15rem] text-black stroke-text text-center w-full whitespace-nowrap overflow-hidden">
+            王狂見る王狂見る
+          </div>
+          <div className='z-10 flex flex-col items-center mt-20 lg:mt-0 w-full lg:w-2/5 text-center animate-fade'>
+            <img src={BingelordLogo} alt="" className="p-4 drop-shadow-xl h-[6rem]" />
+            <p className="font-space-mono text-sm tracking-widest">A Movies & Series Browsing and Streaming Platform</p>
+            <button className="bg-white text-black font-semibold mt-5 px-4 py-2 rounded transition hover:scale-105" onClick={() => navigate('auth')}>Get Started</button>
+          </div>
+          {apiData && <RecentActivity data={apiData?.results.slice(0, 9)} />}
+        </div>
+        <div className='z-10 rel mt-24 text-center'>
+          <p className="z-10 font-space-mono tracking-widest">built with</p>
+          <div className="flex flex-wrap justify-center gap-4 mt-4 mb-5">
+            {techStack.map((tech) => (
+              <a key={tech.name} href={tech.url} target="_blank" rel="noopener noreferrer">
+                <img src={tech.logo} alt={tech.name} className="w-10 h-10 sm:w-12 sm:h-12 transition-transform hover:scale-110" />
+              </a>
+            ))}
+          </div>
+          <div className='flex justify-center gap-4'>
+            <button className="flex items-center bg-white text-black font-semibold px-4 py-2 rounded transition hover:scale-105" onClick={() => handleRedirect('https://github.com/samay15jan/bingelord')}>
+              Github <FaGithub className='ml-2' size={22} />
+            </button>
+            <button className="flex items-center bg-white text-black font-semibold px-4 py-2 rounded transition hover:scale-105" onClick={() => handleRedirect('https://www.youtube.com/watch?v=jGQ44HlC5UA')}>
+              Demo <FaYoutube className='ml-2' size={22} />
+            </button>
+          </div>
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-gray-600 to-transparent mt-10 mb-2"></div>
+          <p className="font-space-mono tracking-widest my-4">Crafted By Samay Kumar</p>
+        </div>
+      </div>
+    </div>
   )
 }
-
-export default Main

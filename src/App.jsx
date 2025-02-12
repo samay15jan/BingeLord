@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
+import { ReactLenis } from 'lenis/react';
 import LandingPage from './pages/LandingPage'
 import HomePage from './pages/HomePage'
 import ContentPage from './pages/ContentPage'
@@ -17,23 +18,25 @@ function App() {
     useEffect(() => {
       window.scrollTo(0, 0)
     }, [pathname])
-  
+
     return null
   };
-  
+
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route index element={<LandingPage />}/>
-        <Route path="/auth" element={<AuthenticationPage/>}/>
-        <Route path="/search" element={<SearchPage />}/>
-        <Route path="/account" element={<AccountPage />}/>
-        <Route path="/404" element={<ErrorPage />}/>
-        <Route path="/:type" element={<HomePage />}/>
-        <Route path="/:type/:id" element={<ContentPage />}/>
-        <Route path="/:type/:id/:menu/:url" element={<Overflow />}/>
-      </Routes>
+      <ReactLenis root options={{ lerp: 0.15 }}>
+        <ScrollToTop />
+        <Routes>
+          <Route index element={<LandingPage />} />
+          <Route path="/auth" element={<AuthenticationPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/404" element={<ErrorPage />} />
+          <Route path="/:type" element={<HomePage />} />
+          <Route path="/:type/:id" element={<ContentPage />} />
+          <Route path="/:type/:id/:menu/:url" element={<Overflow />} />
+        </Routes>
+      </ReactLenis>
     </BrowserRouter>
   )
 }
