@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.793038570777">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Movies</title>
+    <meta name="title" content="Movies">
+    <meta name="description" content="Retrieves the list of trending movies of the week from TMDB.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://docs.bingelord.samay15jan.xyz/trending/movies/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.bingelord.samay15jan.xyz/trending/movies/">
+    <meta property="og:title" content="Movies">
+    <meta property="og:description" content="Retrieves the list of trending movies of the week from TMDB.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://docs.bingelord.samay15jan.xyz/trending/movies/">
+    <meta property="twitter:title" content="Movies">
+    <meta property="twitter:description" content="Retrieves the list of trending movies of the week from TMDB.">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../static/logo.png" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.793038570777" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.793038570777" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.793038570777" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.793038570777" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Bingelord Backend</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://bingelord-backend.onrender.com">API</a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/samay15jan/bingelord">Github</a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://samay15jan.xyz">Author</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://bingelord-backend.onrender.com">API</a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/samay15jan/bingelord">Github</a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://samay15jan.xyz">Author</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="movies" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#movies">#</doc-anchor-trigger>
+        <span>Movies</span>
+    </h1>
+</doc-anchor-target>
+<p>Retrieves the list of trending movies of the week from TMDB.</p>
+<doc-tabs>
+<doc-tab v-cloak id="request">
+<template #title>Request</template>
+<p>HTTP</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-http"><code v-pre class="language-http">  GET /api/trendingMovie</code></pre>
+</doc-codeblock></div>
+<p>cURL</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">  curl -X GET &quot;https://bingelord-backend.onrender.com/api/trendingMovie&quot;</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="response">
+<template #title>Response</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-json"><code v-pre class="language-json">{
+&quot;page&quot;: 1,
+&quot;results&quot;: [
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/44immBwzhDVyjn87b3x3l9mlhAD.jpg&quot;,
+    &quot;id&quot;: 934433,
+    &quot;title&quot;: &quot;Scream VI&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Scream VI&quot;,
+    &quot;overview&quot;: &quot;Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.&quot;,
+    &quot;poster_path&quot;: &quot;/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      27,
+      9648,
+      53
+    ],
+    &quot;popularity&quot;: 609.941,
+    &quot;release_date&quot;: &quot;2023-03-08&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.374,
+    &quot;vote_count&quot;: 684
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/b9UCfDzwiWw7mIFsIQR9ZJUeh7q.jpg&quot;,
+    &quot;id&quot;: 868759,
+    &quot;title&quot;: &quot;Ghosted&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Ghosted&quot;,
+    &quot;overview&quot;: &quot;Salt-of-the-earth Cole falls head over heels for enigmatic Sadie — but then makes the shocking discovery that she’s a secret agent. Before they can decide on a second date, Cole and Sadie are swept away on an international adventure to save the world.&quot;,
+    &quot;poster_path&quot;: &quot;/liLN69YgoovHVgmlHJ876PKi5Yi.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      10749,
+      28,
+      35
+    ],
+    &quot;popularity&quot;: 619.83,
+    &quot;release_date&quot;: &quot;2023-04-21&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.318,
+    &quot;vote_count&quot;: 359
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/iJQIbOPm81fPEGKt5BPuZmfnA54.jpg&quot;,
+    &quot;id&quot;: 502356,
+    &quot;title&quot;: &quot;The Super Mario Bros. Movie&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;The Super Mario Bros. Movie&quot;,
+    &quot;overview&quot;: &quot;While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.&quot;,
+    &quot;poster_path&quot;: &quot;/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      16,
+      12,
+      10751,
+      14,
+      35
+    ],
+    &quot;popularity&quot;: 7212.464,
+    &quot;release_date&quot;: &quot;2023-04-05&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.51,
+    &quot;vote_count&quot;: 1452
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg&quot;,
+    &quot;id&quot;: 640146,
+    &quot;title&quot;: &quot;Ant-Man and the Wasp: Quantumania&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Ant-Man and the Wasp: Quantumania&quot;,
+    &quot;overview&quot;: &quot;Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.&quot;,
+    &quot;poster_path&quot;: &quot;/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      28,
+      12,
+      878
+    ],
+    &quot;popularity&quot;: 9272.643,
+    &quot;release_date&quot;: &quot;2023-02-15&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.526,
+    &quot;vote_count&quot;: 1879
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/7bWxAsNPv9CXHOhZbJVlj2KxgfP.jpg&quot;,
+    &quot;id&quot;: 713704,
+    &quot;title&quot;: &quot;Evil Dead Rise&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Evil Dead Rise&quot;,
+    &quot;overview&quot;: &quot;Two sisters find an ancient vinyl that gives birth to bloodthirsty demons that run amok in a Los Angeles apartment building and thrusts them into a primal battle for survival as they face the most nightmarish version of family imaginable.&quot;,
+    &quot;poster_path&quot;: &quot;/mIBCtPvKZQlxubxKMeViO2UrP3q.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      27,
+      53
+    ],
+    &quot;popularity&quot;: 1898.367,
+    &quot;release_date&quot;: &quot;2023-04-12&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.965,
+    &quot;vote_count&quot;: 201
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/fUVK7iUF0k9dU3MwV5MIKWMKGys.jpg&quot;,
+    &quot;id&quot;: 298618,
+    &quot;title&quot;: &quot;The Flash&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;The Flash&quot;,
+    &quot;overview&quot;: &quot;When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save the world that he is in and return to the future that he knows, Barry's only hope is to race for his life. But will making the ultimate sacrifice be enough to reset the universe?&quot;,
+    &quot;poster_path&quot;: &quot;/5aZoKcR8VxYWhiENYOUg6ooGbc8.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      878,
+      28,
+      12
+    ],
+    &quot;popularity&quot;: 170.114,
+    &quot;release_date&quot;: &quot;2023-06-14&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 0,
+    &quot;vote_count&quot;: 0
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/dQObIWkxfzKEDhtjOSoFnyCVgt0.jpg&quot;,
+    &quot;id&quot;: 447365,
+    &quot;title&quot;: &quot;Guardians of the Galaxy Volume 3&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Guardians of the Galaxy Volume 3&quot;,
+    &quot;overview&quot;: &quot;Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.&quot;,
+    &quot;poster_path&quot;: &quot;/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      878,
+      12,
+      28
+    ],
+    &quot;popularity&quot;: 235.884,
+    &quot;release_date&quot;: &quot;2023-05-03&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 0,
+    &quot;vote_count&quot;: 0
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/ovM06PdF3M8wvKb06i4sjW3xoww.jpg&quot;,
+    &quot;id&quot;: 76600,
+    &quot;title&quot;: &quot;Avatar: The Way of Water&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Avatar: The Way of Water&quot;,
+    &quot;overview&quot;: &quot;Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.&quot;,
+    &quot;poster_path&quot;: &quot;/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      878,
+      12,
+      28
+    ],
+    &quot;popularity&quot;: 3471.132,
+    &quot;release_date&quot;: &quot;2022-12-14&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.7,
+    &quot;vote_count&quot;: 7530
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/m0mLjT3TkTXYU2e1XP3wmYDlIml.jpg&quot;,
+    &quot;id&quot;: 873256,
+    &quot;title&quot;: &quot;Kiss, Kiss!&quot;,
+    &quot;original_language&quot;: &quot;pl&quot;,
+    &quot;original_title&quot;: &quot;Gorzko, gorzko!&quot;,
+    &quot;overview&quot;: &quot;Convinced he can charm any woman, a tenacious flirt sets his sights on a headstrong bride-to-be engaged to the son of an ambitious politician.&quot;,
+    &quot;poster_path&quot;: &quot;/jLn0dg0n73v8L6lKkTkX5k8POyy.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      10749,
+      35
+    ],
+    &quot;popularity&quot;: 41.779,
+    &quot;release_date&quot;: &quot;2023-04-26&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.25,
+    &quot;vote_count&quot;: 4
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/wybmSmviUXxlBmX44gtpow5Y9TB.jpg&quot;,
+    &quot;id&quot;: 594767,
+    &quot;title&quot;: &quot;Shazam! Fury of the Gods&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Shazam! Fury of the Gods&quot;,
+    &quot;overview&quot;: &quot;Billy Batson and his foster siblings, who transform into superheroes by saying \&quot;Shazam!\&quot;, are forced to get back into action and fight the Daughters of Atlas, who they must stop from using a weapon that could destroy the world.&quot;,
+    &quot;poster_path&quot;: &quot;/2VK4d3mqqTc7LVZLnLPeRiPaJ71.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      28,
+      35,
+      14
+    ],
+    &quot;popularity&quot;: 4319.273,
+    &quot;release_date&quot;: &quot;2023-03-15&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.848,
+    &quot;vote_count&quot;: 1215
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/eSVu1FvGPy86TDo4hQbpuHx55DJ.jpg&quot;,
+    &quot;id&quot;: 700391,
+    &quot;title&quot;: &quot;65&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;65&quot;,
+    &quot;overview&quot;: &quot;65 million years ago, the only 2 survivors of a spaceship from Somaris that crash-landed on Earth must fend off dinosaurs and reach the escape vessel in time before an imminent asteroid strike threatens to destroy the planet.&quot;,
+    &quot;poster_path&quot;: &quot;/rzRb63TldOKdKydCvWJM8B6EkPM.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      878,
+      12,
+      53,
+      28
+    ],
+    &quot;popularity&quot;: 1189.997,
+    &quot;release_date&quot;: &quot;2023-03-02&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.3,
+    &quot;vote_count&quot;: 756
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/h8gHn0OzBoaefsYseUByqsmEDMY.jpg&quot;,
+    &quot;id&quot;: 603692,
+    &quot;title&quot;: &quot;John Wick: Chapter 4&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;John Wick: Chapter 4&quot;,
+    &quot;overview&quot;: &quot;With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.&quot;,
+    &quot;poster_path&quot;: &quot;/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      28,
+      53,
+      80
+    ],
+    &quot;popularity&quot;: 1312.743,
+    &quot;release_date&quot;: &quot;2023-03-22&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.975,
+    &quot;vote_count&quot;: 1207
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/pbMbDlOAkVuvnxovBA2ENin59xH.jpg&quot;,
+    &quot;id&quot;: 447277,
+    &quot;title&quot;: &quot;The Little Mermaid&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;The Little Mermaid&quot;,
+    &quot;overview&quot;: &quot;The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy.&quot;,
+    &quot;poster_path&quot;: &quot;/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      12,
+      10751,
+      14,
+      10749
+    ],
+    &quot;popularity&quot;: 210.368,
+    &quot;release_date&quot;: &quot;2023-05-18&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 0,
+    &quot;vote_count&quot;: 0
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/rH3jY9JN9krUyE0Q3WLNtujMs8.jpg&quot;,
+    &quot;id&quot;: 667538,
+    &quot;title&quot;: &quot;Transformers: Rise of the Beasts&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Transformers: Rise of the Beasts&quot;,
+    &quot;overview&quot;: &quot;A ‘90s globetrotting adventure that introduces the Maximals, Predacons, and Terrorcons to the existing battle on earth between Autobots and Decepticons.&quot;,
+    &quot;poster_path&quot;: &quot;/g1HcrEiN0UiSpjQMJ3Klzw8KOZS.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      28,
+      12,
+      878
+    ],
+    &quot;popularity&quot;: 161.222,
+    &quot;release_date&quot;: &quot;2023-06-07&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 0,
+    &quot;vote_count&quot;: 0
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/ifUfE79O1raUwbaQRIB7XnFz5ZC.jpg&quot;,
+    &quot;id&quot;: 646385,
+    &quot;title&quot;: &quot;Scream&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Scream&quot;,
+    &quot;overview&quot;: &quot;Twenty-five years after a streak of brutal murders shocked the quiet town of Woodsboro, a new killer has donned the Ghostface mask and begins targeting a group of teenagers to resurrect secrets from the town’s deadly past.&quot;,
+    &quot;poster_path&quot;: &quot;/4qIV5WXP1xQvpPAHmgVxCmxvPh6.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      27,
+      9648,
+      53
+    ],
+    &quot;popularity&quot;: 373.035,
+    &quot;release_date&quot;: &quot;2022-01-12&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.737,
+    &quot;vote_count&quot;: 2344
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/3GLrNvvkVJjBiffV8RsEh9Xg1eS.jpg&quot;,
+    &quot;id&quot;: 997776,
+    &quot;title&quot;: &quot;Justice League x RWBY: Super Heroes &amp; Huntsmen, Part One&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Justice League x RWBY: Super Heroes &amp; Huntsmen, Part One&quot;,
+    &quot;overview&quot;: &quot;Superman, Batman, Wonder Woman, Flash, Cyborg, Green Lantern and Vixen are transported to the strange world of Remnant and find themselves turned into teenagers. Meanwhile, Remnant heroes Ruby, Weiss, Blake and Yang must combine forces with the Justice League to uncover why their planet has been mysteriously altered before a superpowered Grimm destroys everything.&quot;,
+    &quot;poster_path&quot;: &quot;/sjBFnG8DpouuWi161KbjbAER235.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      16,
+      28,
+      14
+    ],
+    &quot;popularity&quot;: 107.913,
+    &quot;release_date&quot;: &quot;2023-04-25&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 8.238,
+    &quot;vote_count&quot;: 21
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/z3Qc5a0grcCREAQKqI195P05dVf.jpg&quot;,
+    &quot;id&quot;: 813726,
+    &quot;title&quot;: &quot;A Tourist's Guide to Love&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;A Tourist's Guide to Love&quot;,
+    &quot;overview&quot;: &quot;After an unexpected break up, a travel executive accepts an assignment to go undercover and learn about the tourist industry in Vietnam. Along the way, she finds adventure and romance with her Vietnamese expat tour guide and they decide to hijack the tour bus in order to explore life and love off the beaten path.&quot;,
+    &quot;poster_path&quot;: &quot;/uWkpjbBe4gRZilXRXbYfsMUZMhz.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      10749,
+      35,
+      12
+    ],
+    &quot;popularity&quot;: 275.635,
+    &quot;release_date&quot;: &quot;2023-04-21&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.603,
+    &quot;vote_count&quot;: 39
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/vcNXzOfACCXZA7vb8SNde0LUC9o.jpg&quot;,
+    &quot;id&quot;: 1068141,
+    &quot;title&quot;: &quot;Mighty Morphin Power Rangers: Once &amp; Always&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;Mighty Morphin Power Rangers: Once &amp; Always&quot;,
+    &quot;overview&quot;: &quot;After tragedy strikes, an unlikely young hero takes her rightful place among the Power Rangers to face off against the team's oldest archnemesis.&quot;,
+    &quot;poster_path&quot;: &quot;/vc87upO8vcAGj9OmgH3AIz6ikKB.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      28,
+      878,
+      14
+    ],
+    &quot;popularity&quot;: 238.666,
+    &quot;release_date&quot;: &quot;2023-04-19&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 6.931,
+    &quot;vote_count&quot;: 131
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/dlrWhn0G3AtxYUx2D9P2bmzcsvF.jpg&quot;,
+    &quot;id&quot;: 536554,
+    &quot;title&quot;: &quot;M3GAN&quot;,
+    &quot;original_language&quot;: &quot;en&quot;,
+    &quot;original_title&quot;: &quot;M3GAN&quot;,
+    &quot;overview&quot;: &quot;A brilliant toy company roboticist uses artificial intelligence to develop M3GAN, a life-like doll programmed to emotionally bond with her newly orphaned niece. But when the doll's programming works too well, she becomes overprotective of her new friend with terrifying results.&quot;,
+    &quot;poster_path&quot;: &quot;/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      878,
+      27,
+      35
+    ],
+    &quot;popularity&quot;: 724.995,
+    &quot;release_date&quot;: &quot;2022-12-28&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 7.367,
+    &quot;vote_count&quot;: 2426
+  },
+  {
+    &quot;adult&quot;: false,
+    &quot;backdrop_path&quot;: &quot;/xEn2SqJQ2uBAxSBfrcAqgiFDQCa.jpg&quot;,
+    &quot;id&quot;: 944152,
+    &quot;title&quot;: &quot;Chokehold&quot;,
+    &quot;original_language&quot;: &quot;tr&quot;,
+    &quot;original_title&quot;: &quot;Boğa Boğa&quot;,
+    &quot;overview&quot;: &quot;Evading a scandal, a couple from Istanbul starts over in a town on the Aegean coast — but quickly discover the locals are determined to get rid of them.&quot;,
+    &quot;poster_path&quot;: &quot;/bW7NgAKpP24skkTjmJxNYWjOwdj.jpg&quot;,
+    &quot;media_type&quot;: &quot;movie&quot;,
+    &quot;genre_ids&quot;: [
+      53,
+      18
+    ],
+    &quot;popularity&quot;: 246.108,
+    &quot;release_date&quot;: &quot;2023-04-21&quot;,
+    &quot;video&quot;: false,
+    &quot;vote_average&quot;: 5.6,
+    &quot;vote_count&quot;: 15
+  }
+],
+&quot;total_pages&quot;: 1000,
+&quot;total_results&quot;: 20000
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Introduction</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../trending/series/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Series</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2025. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Movies", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
