@@ -8,6 +8,11 @@ Welcome to Binge Lord, a project born out of my passion for movies/series and th
 
 https://github.com/samay15jan/BingeLord/assets/97271429/568d2228-bc2a-421a-89bf-fe5e7ff16303
 
+#### Hosting Links
+ - [Frontend](https://bingelord.samay15jan.xyz)
+ - [Backend](https://bingelord.samay15jan.xyz)
+ - [Docs](https://docs.bingelord.samay15jan.xyz)
+
 ## Features
 
 - **Movie/Series Information**: Utilizes [TMDB](https://developer.themoviedb.org/docs/getting-started) API to fetch data.

@@ -29,6 +29,9 @@ app.use('/', recommended)
 app.use('/', search)
 app.use('/', series)
 app.use('/', trending)
+app.get("/", (req, res) => {
+    res.redirect("https://docs.bingelord.samay15jan.xyz");
+});
 
 app.listen(port, () => {
     console.log(`Listening at port: ${port}`)
