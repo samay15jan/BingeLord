@@ -1,0 +1,16 @@
+{
+  "name": "bingelord backend docs",
+  "version": "1.0.0",
+  "description": "Documentation for Bingelord Backend.",
+  "keywords": [],
+  "license": "ISC",
+  "author": "Samay Kumar",
+  "main": "index.js",
+  "scripts": {
+    "dev": "retype start",
+    "build": "retype build"
+  },
+  "dependencies": {
+    "retypeapp": "^2.4.0"
+  }
+}

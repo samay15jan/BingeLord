@@ -1,0 +1,16 @@
+input: .
+output: ./public
+url: https://docs.bingelord.samay15jan.xyz
+branding:
+  title: Bingelord Backend
+  label: Docs
+favicon: static/logo.png
+links:
+  - text: API
+    link: https://bingelord-backend.onrender.com
+  - text: Github
+    link: https://github.com/samay15jan/bingelord
+  - text: Author
+    link: https://samay15jan.xyz
+footer:
+  copyright: '&copy; Copyright {{ year }}. All rights reserved.'
